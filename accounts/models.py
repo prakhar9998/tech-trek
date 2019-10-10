@@ -13,3 +13,7 @@ class Player(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    @property
+    def num_questions_solved(self):
+        return self.current_question - 1
