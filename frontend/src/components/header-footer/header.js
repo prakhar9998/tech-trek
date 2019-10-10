@@ -1,6 +1,4 @@
 import React from "react";
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -19,7 +17,7 @@ class Header extends React.Component {
       users: ""
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.gettingUsername();
   }
   gettingUsername = () => {
@@ -64,27 +62,17 @@ class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>
-                  <Link to="/Rules">Rules</Link>
-                </NavLink>
+                <NavLink href="/Rules">Rules</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/Dashboard">Dashboard</Link>
-                </NavLink>
+                <NavLink href="/Dashboard">Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/Leaderboard" active>
-                    Leaderboard
-                  </Link>
-                </NavLink>
+                <NavLink href="/Leaderboard">Leaderboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/" onClick={this.clearLocal.bind(this)}>
-                    Logout
-                  </Link>
+                <NavLink href="/" onClick={this.clearLocal}>
+                  Logout
                 </NavLink>
               </NavItem>
             </Nav>

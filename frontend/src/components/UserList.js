@@ -16,9 +16,9 @@ class UserList extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.list.map(listitem => {
+              {this.props.list.map((listitem, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td className="avatar-column">
                       <img
                         src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"
