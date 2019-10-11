@@ -1,9 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-
-import { BrowserRouter as Link } from "react-router-dom";
-=======
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
 import {
   Collapse,
   Navbar,

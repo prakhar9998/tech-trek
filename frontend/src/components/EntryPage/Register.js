@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 import "../../App.css";
-<<<<<<< HEAD
-
-=======
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +16,6 @@ class Register extends Component {
       errors: []
     };
   }
-<<<<<<< HEAD
 
   handleJwt = () => {
     fetch("http://127.0.0.1:8000/accounts/api/register/", {
@@ -42,43 +37,6 @@ class Register extends Component {
       });
   };
 
-=======
-
-  handleJwt = () => {
-    fetch("http://127.0.0.1:8000/accounts/api/register/", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        const token = responseJson.token.access;
-        localStorage.setItem("registertoken", token);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    // axios.post('http://127.0.0.1:8000/accounts/api/register/', {
-    //     username: this.state.username,
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   })
-    //   .then((response) => {
-    //      const jwtvalue=JSON.parse(response)
-    //      const jwt=jwtvalue['data']
-    //      console.log(jwt)
-    //      localStorage.setItem('token',jwt)
-
-    //   }, (error) => {
-    //     //console.log(error);
-    //   });
-  };
-
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
   Validation = (elm, msg) => {
     this.setState(prevState => ({
       errors: [...prevState.errors, { elm, msg }]
@@ -95,15 +53,6 @@ class Register extends Component {
       return { errors: newArr };
     });
   };
-<<<<<<< HEAD
-
-  handleChange = e => {
-    const elem = e.target;
-    this.setState({
-      [elem.name]: elem.value
-    });
-    this.clearValidation(elem.name);
-=======
   onNameChange = e => {
     this.setState({ name: e.target.value });
     this.clearValidation("name");
@@ -135,7 +84,6 @@ class Register extends Component {
   onEmailChange = e => {
     this.setState({ email: e.target.value });
     this.clearValidation("email");
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
   };
 
   submitRegister = e => {
@@ -227,11 +175,7 @@ class Register extends Component {
               name="name"
               className="login-input"
               placeholder="Name"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onNameChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">{nameErr ? nameErr : ""}</small>
           </div>
@@ -242,11 +186,7 @@ class Register extends Component {
               name="username"
               className="login-input"
               placeholder="Username"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onUsernameChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">
               {usernameErr ? usernameErr : ""}
@@ -259,11 +199,7 @@ class Register extends Component {
               name="year"
               className="login-input"
               placeholder="Year"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onYearChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">{yearErr ? yearErr : ""}</small>
           </div>
@@ -274,11 +210,7 @@ class Register extends Component {
               name="branch"
               className="login-input"
               placeholder="Branch"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onBranchChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">{branchErr ? branchErr : ""}</small>
           </div>
@@ -289,11 +221,7 @@ class Register extends Component {
               name="password"
               className="login-input"
               placeholder="Password"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onPasswordChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">
               {passwordErr ? passwordErr : ""}
@@ -306,11 +234,7 @@ class Register extends Component {
               name="cpassword"
               className="login-input"
               placeholder="Confirm Password"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onCpasswordChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">
               {cpasswordErr ? cpasswordErr : ""}
@@ -323,11 +247,7 @@ class Register extends Component {
               name="mobile"
               className="login-input"
               placeholder="Mobile"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onMobileChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">{mobileErr ? mobileErr : ""}</small>
           </div>
@@ -338,22 +258,14 @@ class Register extends Component {
               name="email"
               className="login-input"
               placeholder="Email"
-<<<<<<< HEAD
-              onChange={this.handleChange}
-=======
               onChange={this.onEmailChange}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
             />
             <small className="danger-error">{emailErr ? emailErr : ""}</small>
           </div>
           <button
             type="button"
             className="login-btn"
-<<<<<<< HEAD
-            onClick={this.submitRegister}
-=======
             onClick={this.submitRegister.bind(this)}
->>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
           >
             Select Avatar
           </button>
