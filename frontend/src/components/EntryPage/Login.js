@@ -64,11 +64,14 @@ class Login extends Component {
           });
           this.props.onSuccessfulLogin();
         })
-        .catch(err => {
-          console.log("err", err);
-          this.Validation("logintoken", "Invalid Credentials");
-        });
-    }
+       
+ 
+      .catch(err => {
+        console.log("err", err);
+        this.Validation("logintoken", "Invalid Credentials")
+      });
+  }
+ 
   }
   isAuthenticated() {
     const token = localStorage.getItem("token");
@@ -130,6 +133,7 @@ class Login extends Component {
             </button>
           </form>
         </div>
+        
       </div>
     );
   }

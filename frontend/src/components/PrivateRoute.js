@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 		try {
 			userLoggedIn = localStorage.getItem('logintoken').length>10?1:0;
 		} catch(e) {
-      userLoggedIn = false;
+      userLoggedIn = 0;
     }
 		
 		return (
