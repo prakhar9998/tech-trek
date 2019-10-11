@@ -37,12 +37,12 @@ class Badge(models.Model):
     def has_badge(self, player):
         return self in player.badges.all()
     
-    def award_badge_to(self, player):
+    def award_to(self, player):
         
         if self.has_badge(player):
             return False
         
-        BadgeToPlayer.create(badge=self, player=player)
+        BadgeToPlayer.objects.create(badge=self, player=player)
         # TODO: Send signal when badge is awarded.
         return True
 

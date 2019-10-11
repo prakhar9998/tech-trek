@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 from rest_framework.decorators import api_view
 from utils.permissions import IsPaid
+from utils.badges import should_award_badge
 from questions.models import Question
 from accounts.models import Player
+from badges.models import Badge
 from datetime import datetime
 
 from questions.api.serializers import (
@@ -75,6 +77,12 @@ class GetQuestion(views.APIView):
             player.score = player.score + 10
             player.unlock_time = datetime.now() + question.wait_duration
             player.last_solved = datetime.now()
+
+            # Award badges
+            should_award, badge_type = should_award_badge(player)
+            if should_award:
+                badge = Badge.objects.get(badge_type=badge_type)
+                badge.award_to(player)
             player.save()
             is_correct = True
 
@@ -83,6 +91,12 @@ class GetQuestion(views.APIView):
             player.score = player.score + 5
             player.unlock_time = datetime.now() + question.wait_duration
             player.last_solved = datetime.now()
+            
+            # Award badges
+            should_award, badge_type = should_award_badge(player)
+            if should_award:
+                badge = Badge.objects.get(badge_type=badge_type)
+                badge.award_to(player)
             player.save()
 
             is_correct = True
