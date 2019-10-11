@@ -48,7 +48,10 @@ class Dashboard extends Component {
       .then(responseJson => {
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
-
+          this.setState({
+            currQ: responseJson.current_question,
+            score: responseJson.score
+          });
         if (responseJson.isTimeLeft === true) {
           this.setState({
             isTimeLeft: true,
@@ -62,20 +65,6 @@ class Dashboard extends Component {
       })
       .catch(error => {
         console.log(error);
-      });
-
-    fetch("http://127.0.0.1:8000/accounts/api/", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localtoken}`
-      }
-    })
-      .then(res => res.json())
-      .then(response => {
-        this.setState({
-          currQ: response.current_question,
-          score: response.score
-        });
       });
   }
 
@@ -115,6 +104,11 @@ class Dashboard extends Component {
                 responseJson &&
                 responseJson.detail &&
                 responseJson.detail.question;
+              this.setState({
+                currQ: responseJson.current_question,
+                score: responseJson.score
+              });
+
               if (responseJson.isTimeLeft === true) {
                 this.setState({
                   isTimeLeft: true,
@@ -128,20 +122,6 @@ class Dashboard extends Component {
             })
             .catch(error => {
               console.log(error);
-            });
-
-          fetch("http://127.0.0.1:8000/accounts/api/", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localtoken}`
-            }
-          })
-            .then(res => res.json())
-            .then(response => {
-              this.setState({
-                currQ: response.current_question,
-                score: response.score
-              });
             });
 
           this.setState({

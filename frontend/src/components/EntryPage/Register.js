@@ -35,20 +35,6 @@ class Register extends Component {
       .catch(error => {
         console.log(error);
       });
-    // axios.post('http://127.0.0.1:8000/accounts/api/register/', {
-    //     username: this.state.username,
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   })
-    //   .then((response) => {
-    //      const jwtvalue=JSON.parse(response)
-    //      const jwt=jwtvalue['data']
-    //      console.log(jwt)
-    //      localStorage.setItem('token',jwt)
-
-    //   }, (error) => {
-    //     //console.log(error);
-    //   });
   };
 
   Validation = (elm, msg) => {
@@ -113,16 +99,17 @@ class Register extends Component {
     if (this.state.branch === "") {
       this.Validation("branch", "Oops!! you forget to enter branch");
     }
-    if (this.state.password === "") {
-      this.Validation("password", "Enter Password for security purpose");
+    if (this.state.password === "" || this.state.password.length<7) {
+      this.Validation("password", "Password lenght should be greater than 6");
     }
-    if (this.state.cpassword === "") {
+    if (this.state.cpassword === "" || this.state.cpassword!==this.state.password) {
       this.Validation("cpassword", "Password didn't matched !!");
     }
-    if (this.state.mobile === "") {
+   
+    if (this.state.mobile === "" || this.state.mobile.length<10) {
       this.Validation(
         "mobile",
-        "Enter mobile No. so that we can contact you if you win"
+        "Enter Valid Mobile No."
       );
     }
     if (this.state.email === "") {
