@@ -1,4 +1,4 @@
-from rest_framework import generics, views
+from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -8,12 +8,15 @@ from questions.models import Question
 from accounts.models import Player
 from badges.models import Badge
 from datetime import datetime
+from django.db.models import Count
 
 from questions.api.serializers import (
     GetQuestionSerializer,
     QuestionSerializer,
     LeaderboardSerializer,
 )
+
+from badges.api.serializers import BadgesSerializer
 
 class GetQuestion(views.APIView):
     permission_classes = [IsAuthenticated, IsPaid]
@@ -32,12 +35,16 @@ class GetQuestion(views.APIView):
             q = Question.objects.get(level=player.current_question)
             q_text = q.question
 
+        queryset = player.badges.annotate(total=Count('badge_type'))
+        badge_serializer = BadgesSerializer(queryset, many=True)
+
         return Response({
                 "username": player.username,
                 "is_paid": player.is_paid,
                 "current_question": player.current_question,
                 "score": player.score,
                 "isTimeLeft": bool(time_left),
+                "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text,
                     "time_left": time_left,
