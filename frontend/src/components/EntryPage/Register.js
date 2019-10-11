@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 
 import "../../App.css";
+import Avatar from "./avatar";
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       username: "",
-      year: "",
-      branch: "",
+      admissionNo: "",
       password: "",
       cpassword: "",
       mobile: "",
       email: "",
+      avatarNo:"1",
       errors: []
     };
+  }
+
+  changeAvatar=(a)=>{
+    this.setState({
+      avatarNo:a
+    })
   }
 
   handleJwt = () => {
@@ -24,7 +30,8 @@ class Register extends Component {
       body: JSON.stringify({
         username: this.state.username,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        avatar_no: this.state.avatarNo
       })
     })
       .then(response => response.json())
@@ -34,6 +41,7 @@ class Register extends Component {
       })
       .catch(error => {
         console.log(error);
+        
       });
   };
 
@@ -53,22 +61,15 @@ class Register extends Component {
       return { errors: newArr };
     });
   };
-  onNameChange = e => {
-    this.setState({ name: e.target.value });
+  onAdmissionChange = e => {
+    this.setState({ admissionNo: e.target.value });
     this.clearValidation("name");
   };
   onUsernameChange = e => {
     this.setState({ username: e.target.value });
     this.clearValidation("username");
   };
-  onYearChange = e => {
-    this.setState({ year: e.target.value });
-    this.clearValidation("year");
-  };
-  onBranchChange = e => {
-    this.setState({ branch: e.target.value });
-    this.clearValidation("branch");
-  };
+  
   onPasswordChange = e => {
     this.setState({ password: e.target.value });
     this.clearValidation("password");
@@ -87,17 +88,11 @@ class Register extends Component {
   };
 
   submitRegister = e => {
-    if (this.state.name === "") {
-      this.Validation("name", "Please enter your full name");
+    if (this.state.admissionNo === "") {
+      this.Validation("admissionNo", "Please enter your Admission No");
     }
     if (this.state.username === "") {
       this.Validation("username", "Username will be your identity, don't skip");
-    }
-    if (this.state.year === "") {
-      this.Validation("year", "Enter your current year of study");
-    }
-    if (this.state.branch === "") {
-      this.Validation("branch", "Oops!! you forget to enter branch");
     }
     if (this.state.password === "" || this.state.password.length<7) {
       this.Validation("password", "Password lenght should be greater than 6");
@@ -116,41 +111,29 @@ class Register extends Component {
       this.Validation("email", "Provide mail for ease !!!");
     }
     if (
-      this.state.name !== "" &&
+      this.state.admissionNo !== "" &&
       this.state.username !== "" &&
-      this.state.year !== "" &&
-      this.state.branch !== "" &&
       this.state.password !== "" &&
       this.state.cpassword !== "" &&
       this.state.mobile !== "" &&
       this.state.email !== ""
     ) {
       this.handleJwt();
-      this.props.func();
+    
     }
   };
 
   render() {
-    let nameErr = null,
+    console.log(this.state.avatarNo)
+    let admissionErr = null,
       usernameErr = null,
-      yearErr = null,
-      branchErr = null,
       passwordErr = null,
       cpasswordErr = null,
       mobileErr = null,
       emailErr = null;
     for (let err of this.state.errors) {
-      if (err.elm === "name") {
-        nameErr = err.msg;
-      }
       if (err.elm === "username") {
         usernameErr = err.msg;
-      }
-      if (err.elm === "year") {
-        yearErr = err.msg;
-      }
-      if (err.elm === "branch") {
-        branchErr = err.msg;
       }
       if (err.elm === "password") {
         passwordErr = err.msg;
@@ -170,17 +153,6 @@ class Register extends Component {
         <div className="header">Register</div>
         <div className="box">
           <div className="input-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              className="login-input"
-              placeholder="Name"
-              onChange={this.onNameChange}
-            />
-            <small className="danger-error">{nameErr ? nameErr : ""}</small>
-          </div>
-          <div className="input-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -194,26 +166,17 @@ class Register extends Component {
             </small>
           </div>
           <div className="input-group">
-            <label htmlFor="year">Year</label>
-            <input
-              type="number"
-              name="year"
-              className="login-input"
-              placeholder="Year"
-              onChange={this.onYearChange}
-            />
-            <small className="danger-error">{yearErr ? yearErr : ""}</small>
-          </div>
-          <div className="input-group">
-            <label htmlFor="branch">Branch</label>
+            <label htmlFor="username">Admission No.</label>
             <input
               type="text"
-              name="branch"
+              name="username"
               className="login-input"
-              placeholder="Branch"
-              onChange={this.onBranchChange}
+              placeholder="Username"
+              onChange={this.onAdmissionChange}
             />
-            <small className="danger-error">{branchErr ? branchErr : ""}</small>
+            <small className="danger-error">
+              {admissionErr ? admissionErr : ""}
+            </small>
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
@@ -263,12 +226,19 @@ class Register extends Component {
             />
             <small className="danger-error">{emailErr ? emailErr : ""}</small>
           </div>
+          <>
+       
+          SELECT AVATAR
+          
+          <Avatar ava={this.changeAvatar}/>
+          </>
+
           <button
             type="button"
             className="login-btn"
             onClick={this.submitRegister.bind(this)}
           >
-            Select Avatar
+            PAY
           </button>
         </div>
       </div>

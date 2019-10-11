@@ -3,6 +3,7 @@ import "./App.css";
 import Register from "./components/EntryPage/Register";
 import LoginForm from "./components/EntryPage/LoginForm";
 import Avatar from "./components/EntryPage/avatar";
+import {Redirect} from 'react-router-dom'; 
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +11,28 @@ class App extends Component {
     this.state = {
       isLoginOpen: true,
       isRegisterOpen: false,
-      isAvatarOpen: false
+      isAvatarOpen: false,
+      loginOpen:false
+
     };
     this.showAvatar = this.showAvatar.bind(this);
   }
+  componentDidMount(){
+    let tokenlength;
+    if(localStorage.getItem('logintoken')){
+      tokenlength=localStorage.getItem('logintoken').length
+      this.setState({
+        loginOpen: true
+      })
+    }
+    else{
+      this.setState({
+        loginOpen:false
+      })
+    }
+  
+  }
+
 
   showlogin = () => {
     this.setState({
@@ -43,8 +62,11 @@ class App extends Component {
     if (this.props.isavataropen === true) {
       this.showAvatar();
     }
+  
     return (
+     
       <>
+      {this.state.loginOpen===true?(<Redirect to='/Rules' />):(
         <div className="centering">
           <div className="root-container">
             <div className="box-controller">
@@ -75,7 +97,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+      )}
       </>
+
     );
   }
 }
