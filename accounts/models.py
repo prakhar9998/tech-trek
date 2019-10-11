@@ -25,12 +25,3 @@ class Player(AbstractUser):
         print("BADGE INFO", should_award, badge)
         if should_award:
             return badge.award_to(self)
-
-
-# @receiver(pre_save, sender=Player)
-# def handler(sender, **kwargs):
-#     """
-#     Call award badge method before saving/updating player
-#     to check if any badges are awarded.
-#     """
-#     award_badge(sender, **kwargs)

@@ -15,7 +15,7 @@ class Badge(models.Model):
     badge_type = models.CharField(max_length=1, choices=BADGE_CHOICES)
     icon = models.ImageField(upload_to='img/badges')
     player = models.ManyToManyField(Player, related_name="badges", through="BadgeToPlayer")
-    one_player_only = models.BooleanField(default=False)
+    one_time_only = models.BooleanField(default=True)
 
     def __str__(self):
         return self.badge_type
@@ -38,11 +38,18 @@ class Badge(models.Model):
         return self in player.badges.all()
     
     def award_to(self, player):
-        
-        if self.has_badge(player):
-            return False
-        
-        BadgeToPlayer.objects.create(badge=self, player=player)
+
+        if self.one_time_only:
+            if self.has_badge(player):
+                return False
+            else:
+                BadgeToPlayer.objects.create(badge=self, player=player)   
+        else:
+            print("NOT ONE TIME ONLY")
+            BadgeToPlayer.objects.filter(badge=self)\
+                .update(is_active=False)
+            BadgeToPlayer.objects.create(badge=self, player=player)
+            
         # TODO: Send signal when badge is awarded.
         return True
 
@@ -51,3 +58,4 @@ class BadgeToPlayer(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
 
     awarded_at = models.DateTimeField(default=timezone.now)
+    is_active = models.BooleanField(default=True)

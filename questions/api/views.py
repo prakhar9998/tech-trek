@@ -1,7 +1,6 @@
 from rest_framework import generics, views
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 from rest_framework.decorators import api_view
 from utils.permissions import IsPaid
 from utils.badges import should_award_badge
@@ -15,11 +14,6 @@ from questions.api.serializers import (
     QuestionSerializer,
     LeaderboardSerializer,
 )
-
-# class Dashboard(views.APIView):
-#     permission_classes = [IsAuthenticated, IsPaid]
-
-    
 
 class GetQuestion(views.APIView):
     permission_classes = [IsAuthenticated, IsPaid]
@@ -50,10 +44,6 @@ class GetQuestion(views.APIView):
                 }
             })
 
-        # if serializer.is_valid():
-        
-        # return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-
     def post(self, request, format=None):
         player = request.user
         self.check_object_permissions(request, player)
@@ -73,6 +63,17 @@ class GetQuestion(views.APIView):
         question = Question.objects.get(level=player.current_question)
 
         if request.data['answer'].lower() == question.tech_answer:
+            if question.is_level_solved == False:
+                # TODO: award "active" badge to this player and mark
+                # all others "inactive".
+
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question)\
+                    .update(is_level_solved=True)
+                badge = Badge.objects.get(badge_type="4")
+                print("AWARDING...")
+                badge.award_to(player)
+
             player.current_question = player.current_question + 1
             player.score = player.score + 10
             player.unlock_time = datetime.now() + question.wait_duration
@@ -84,6 +85,8 @@ class GetQuestion(views.APIView):
                 badge = Badge.objects.get(badge_type=badge_type)
                 badge.award_to(player)
             player.save()
+
+            
             is_correct = True
 
         elif request.data['answer'].lower() == question.nontech_answer:
