@@ -6,4 +6,5 @@ urlpatterns = [
     path('api/', include('rest_framework.urls')),
     path('accounts/', include('accounts.api.urls')),
     path('questions/', include('questions.api.urls')),
+    path('badges/', include('badges.api.urls')),
 ]
