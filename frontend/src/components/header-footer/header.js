@@ -1,6 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 
 import { BrowserRouter as Link } from "react-router-dom";
+=======
+>>>>>>> 614f660ba5ed41c614ee7cc90e63f534109a2524
 import {
   Collapse,
   Navbar,
@@ -64,27 +67,17 @@ class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>
-                  <Link to="/Rules">Rules</Link>
-                </NavLink>
+                <NavLink href="/Rules">Rules</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/Dashboard">Dashboard</Link>
-                </NavLink>
+                <NavLink href="/Dashboard">Dashboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/Leaderboard" active>
-                    Leaderboard
-                  </Link>
-                </NavLink>
+                <NavLink href="/Leaderboard">Leaderboard</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/" onClick={this.clearLocal.bind(this)}>
-                    Logout
-                  </Link>
+                <NavLink href="/" onClick={this.clearLocal}>
+                  Logout
                 </NavLink>
               </NavItem>
             </Nav>

@@ -17,7 +17,6 @@ class Leaderboard extends Component {
     })
       .then(response => response.json())
       .then(jsonresponse => {
-        console.log(jsonresponse);
         if (jsonresponse) {
           this.setState({
             list: jsonresponse

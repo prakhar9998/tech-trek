@@ -61,9 +61,11 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         username = validated_data['username']
         email = validated_data['email']
         password = validated_data['password']
+        avatar_no = validated_data['avatar_no']
         user = Player(
             username=username,
-            email=email
+            email=email,
+            avatar_no=avatar_no
         )
         user.set_password(password)
         user.save()
