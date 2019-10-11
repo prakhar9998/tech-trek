@@ -63,7 +63,7 @@ class GetQuestion(views.APIView):
         question = Question.objects.get(level=player.current_question)
 
         if request.data['answer'].lower() == question.tech_answer:
-            if question.is_level_solved == False:
+            if question.is_level_solved is False:
                 # TODO: award "active" badge to this player and mark
                 # all others "inactive".
 
@@ -90,6 +90,17 @@ class GetQuestion(views.APIView):
             is_correct = True
 
         elif request.data['answer'].lower() == question.nontech_answer:
+            if question.is_level_solved is False:
+                # TODO: award "active" badge to this player and mark
+                # all others "inactive".
+
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question)\
+                    .update(is_level_solved=True)
+                badge = Badge.objects.get(badge_type="4")
+                print("AWARDING...")
+                badge.award_to(player)
+            
             player.current_question = player.current_question + 1
             player.score = player.score + 5
             player.unlock_time = datetime.now() + question.wait_duration
