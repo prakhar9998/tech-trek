@@ -48,10 +48,10 @@ class Dashboard extends Component {
       .then(responseJson => {
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
-          this.setState({
-            currQ: responseJson.current_question,
-            score: responseJson.score
-          });
+        this.setState({
+          currQ: responseJson.current_question,
+          score: responseJson.score
+        });
         if (responseJson.isTimeLeft === true) {
           this.setState({
             isTimeLeft: true,
@@ -187,11 +187,10 @@ class Dashboard extends Component {
       <div className="dashboard">
         <Header />
 
-        <div className="dashboard-content">
+        <div className="dashboard-content pt-3">
           <div className="question-container">
             <div style={{ margin: "auto" }}>
               <div className="input-group d-inline">
-                {" "}
                 {this.state.isTimeLeft ? (
                   <Timer
                     displayQuestion={this.displayQuestion}
@@ -199,8 +198,7 @@ class Dashboard extends Component {
                   />
                 ) : (
                   <>
-                    <h1 className="font-weight-bold">QUESTION</h1>
-                    <h4 className="text-left">Tier:</h4>
+                    <span className="text-left">Question:</span>
                     <Question ques={this.state.question} />
                     <form onSubmit={this.answerSubmit}>
                       <input
@@ -211,21 +209,27 @@ class Dashboard extends Component {
                         onChange={this.onAnswerChange}
                         required
                       />
+                      <div style={{ color: "red" }}>
+                        <p>{this.state.selectedError} &nbsp;</p>
+                      </div>
+                      <div style={{ color: "green" }}>
+                        <p>{this.state.selectedSuccess}</p>
+                      </div>
 
-                      <button className="login-btn answer-button">CHECK</button>
+                      <button className="btn-block btn btn-primary py-2">
+                        <b> CHECK</b>
+                      </button>
                     </form>
                   </>
                 )}
               </div>
 
-              <div style={{ color: "red" }}>{this.state.selectedError}</div>
-              <div style={{ color: "green" }}>{this.state.selectedSuccess}</div>
               <br />
             </div>
           </div>
 
           <div>
-            <h2 className="text-center text-primary font-weight-bolder">0</h2>
+            {/* <h2 className="text-center text-primary font-weight-bolder">0</h2> */}
             <h3 className="text-center font-weight-bold">
               Level : {this.state.currQ} &nbsp; Score: {this.state.score}
             </h3>

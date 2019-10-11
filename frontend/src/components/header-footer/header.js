@@ -9,6 +9,8 @@ import {
   NavLink
 } from "reactstrap";
 
+import { Link } from "react-router-dom";
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -35,10 +37,10 @@ class Header extends React.Component {
           users: response.username
         });
       });
-      if(localStorage.getItem('logintoken')!==null)
+    if (localStorage.getItem("logintoken") !== null)
       this.setState({
-        tokenlength: localStorage.getItem('logintoken').length
-      })
+        tokenlength: localStorage.getItem("logintoken").length
+      });
   };
   toggle = () => {
     this.setState({
@@ -49,46 +51,47 @@ class Header extends React.Component {
     localStorage.clear("logintoken");
   };
   render() {
-
     return (
-      <>
-        <Navbar dark expand="md">
-          <NavbarBrand href="/">
-            <span className="user" href="#">
-              <img
-                src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"
-                alt=""
-                className="nav-avatar"
-              />
-              {this.state.users}
-            </span>
-          </NavbarBrand>
+      <Navbar dark expand="md">
+        <NavbarBrand href="/">
+          <img
+            src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"
+            alt=""
+            className="nav-avatar"
+          />
+          {this.state.users}
+        </NavbarBrand>
 
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/Rules">Rules</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/Dashboard">Dashboard</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/Leaderboard">Leaderboard</NavLink>
-              </NavItem>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink tag={Link} to="/Rules">
+                Rules
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/Dashboard">
+                Dashboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/Leaderboard">
+                Leaderboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <>
-              {this.state.tokenlength>10?(
-              <NavItem>
-                <NavLink href="/" onClick={this.clearLocal}>
-                  Logout
-                </NavLink>
-              </NavItem>) : ("")
-              }
+                {this.state.tokenlength > 10 ? (
+                  <NavLink tag={Link} to="/" onClick={this.clearLocal}>
+                    Logout
+                  </NavLink>
+                ) : null}
               </>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
     );
   }
 }
