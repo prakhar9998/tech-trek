@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TimeFormat from "hh-mm-ss";
 
-const Timer = (props) => {
+const Timer = props => {
   let mainTime;
-
 
   const [seconds, setSeconds] = useState(props.time);
   useEffect(() => {
@@ -29,7 +28,6 @@ const Timer = (props) => {
       if (updatedSeconds < 1) {
         stopTimer();
         setTimeout(props.displayQuestion(), 2000);
-
       }
       return updatedSeconds;
     });
@@ -39,25 +37,17 @@ const Timer = (props) => {
   const [h, m, s] = display.split(":");
   return (
     <div
-      className="flex flex-column justify-center items-center"
-      style={{ height: "40vh" , display: 'flex' , flexDirection: 'column' , justifyContent: 'center' , alignItems: 'center' }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
     >
-      <h1 className="flex flex-column" style={{display: 'flex' , flexDirection: 'column'}}>Next Question In</h1>
-
-      <div className="flex " style={{display: 'flex'}}>
-        <div className="flex flex-column" style={{ marginRight: "20px" , display: 'flex' , flexDirection: 'column' }}>
-          <h1>{h}</h1>
-          <span>HRS</span>
-        </div>
-        <div className="flex flex-column" style={{ marginRight: "20px" , display: 'flex' , flexDirection: 'column' }}>
-          <h1>{m}</h1>
-          <span>MIN</span>
-        </div>
-        <div className="flex flex-column" style={{display: 'flex' , flexDirection: 'column'}}>
-          <h1>{s}</h1>
-          <span>SEC</span>
-        </div>
-      </div>
+      <span>{h}</span>
+      <span className="px-2">:</span>
+      <span>{m}</span>
+      <span className="px-2">:</span>
+      <span>{s}</span>
     </div>
   );
 };

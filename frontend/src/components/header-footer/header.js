@@ -9,7 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
+import { NavLink as RRNavLink } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -59,31 +59,60 @@ class Header extends React.Component {
             alt=""
             className="nav-avatar"
           />
-          {this.state.users}
+          <span className="pl-2">{this.state.users}</span>
         </NavbarBrand>
 
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/Rules">
+              <NavLink
+                className="py-4 px-4"
+                activeClassName="active"
+                tag={RRNavLink}
+                to="/Rules"
+              >
                 Rules
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/Dashboard">
+              <NavLink
+                className="py-4 px-4"
+                activeClassName="active"
+                tag={RRNavLink}
+                to="/Dashboard"
+              >
                 Dashboard
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/Leaderboard">
+              <NavLink
+                className="py-4 px-4"
+                activeClassName="active"
+                tag={RRNavLink}
+                to="/Leaderboard"
+              >
                 Leaderboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className="py-4 px-4"
+                tag={RRNavLink}
+                to="http://www.facebook.com"
+              >
+                Forum
               </NavLink>
             </NavItem>
             <NavItem>
               <>
                 {this.state.tokenlength > 10 ? (
-                  <NavLink tag={Link} to="/" onClick={this.clearLocal}>
+                  <NavLink
+                    tag={RRNavLink}
+                    to="/"
+                    className="no-border py-4 pl-4 pr-5"
+                    onClick={this.clearLocal}
+                  >
                     Logout
                   </NavLink>
                 ) : null}
