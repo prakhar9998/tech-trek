@@ -99,16 +99,17 @@ class Register extends Component {
     if (this.state.branch === "") {
       this.Validation("branch", "Oops!! you forget to enter branch");
     }
-    if (this.state.password === "") {
-      this.Validation("password", "Enter Password for security purpose");
+    if (this.state.password === "" || this.state.password.length<7) {
+      this.Validation("password", "Password lenght should be greater than 6");
     }
-    if (this.state.cpassword === "") {
+    if (this.state.cpassword === "" || this.state.cpassword!==this.state.password) {
       this.Validation("cpassword", "Password didn't matched !!");
     }
-    if (this.state.mobile === "") {
+   
+    if (this.state.mobile === "" || this.state.mobile.length<10) {
       this.Validation(
         "mobile",
-        "Enter mobile No. so that we can contact you if you win"
+        "Enter Valid Mobile No."
       );
     }
     if (this.state.email === "") {

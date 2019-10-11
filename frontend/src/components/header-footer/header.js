@@ -14,7 +14,8 @@ class Header extends React.Component {
     super(props);
     this.state = {
       isOpen: false,
-      users: ""
+      users: "",
+      tokenlength: 0
     };
   }
   componentDidMount() {
@@ -34,6 +35,10 @@ class Header extends React.Component {
           users: response.username
         });
       });
+      if(localStorage.getItem('logintoken')!==null)
+      this.setState({
+        tokenlength: localStorage.getItem('logintoken').length
+      })
   };
   toggle = () => {
     this.setState({
@@ -44,6 +49,7 @@ class Header extends React.Component {
     localStorage.clear("logintoken");
   };
   render() {
+
     return (
       <>
         <Navbar dark expand="md">
@@ -70,11 +76,15 @@ class Header extends React.Component {
               <NavItem>
                 <NavLink href="/Leaderboard">Leaderboard</NavLink>
               </NavItem>
+              <>
+              {this.state.tokenlength>10?(
               <NavItem>
                 <NavLink href="/" onClick={this.clearLocal}>
                   Logout
                 </NavLink>
-              </NavItem>
+              </NavItem>) : ("")
+              }
+              </>
             </Nav>
           </Collapse>
         </Navbar>
