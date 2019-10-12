@@ -46,13 +46,8 @@ class Rules extends Component {
         </div>
         <div>
           <div className="rules-container mt-5">
-            <h3
-              className="component-heading  pt-4 pb-3"
-              style={{ paddingLeft: "40px", borderBottom: "1px solid white" }}
-            >
-              RULES
-            </h3>
-            <div className="px-4">
+            <h3 className="section-head  pt-4 pb-3">RULES</h3>
+            <div className="upper-list">
               <ul className="list-container">
                 <li>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
