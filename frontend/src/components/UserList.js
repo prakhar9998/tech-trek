@@ -4,9 +4,7 @@ import { Table } from "reactstrap";
 class UserList extends React.Component {
   render() {
     return (
-      <div>
-        {/* <h1 className="text-center mb-3 component-heading">LEADERBOARD</h1> */}
-
+      <div style={{ zIndex: "5" }}>
         <div className="leaderboard-container mt-5">
           <h3 className="section-head  pt-4 pb-3">LEADERBOARD</h3>
           <div className="leaderboard-padding">

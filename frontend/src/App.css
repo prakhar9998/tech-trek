@@ -332,6 +332,7 @@ body,
   border-radius: 5px;
   color: #fff;
   font-size: 1.4rem;
+  z-index: 5;
 }
 
 /* width */
@@ -648,24 +649,49 @@ body,
   }
 }
 
-.web {
-  position: absolute;
-  right: -50px;
-  top: 80px;
-  width: 200px;
-  height: 200px;
+/* spider  */
+
+.spider-wrap {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  right: -60px;
+  top: 60px;
 }
+
 @media (max-width: 768px) {
-  .web {
-    width: 150px;
-    height: 150px;
+  .spider-wrap {
+    top: 55px;
     right: -30px;
-    overflow: hidden !important;
   }
 }
 
-#spidy {
-  animation-name: swing;
+.spider-wrap svg {
+  float: right;
+}
+
+.web-svg {
+  height: 355px;
+  width: 250px;
+}
+
+@media (max-width: 768px) {
+  .web-svg {
+    width: 160px;
+    height: 260px;
+  }
+}
+
+.spider-wrap #spidy {
+  animation-name: spider;
+  animation-duration: 1.5s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.spider-wrap #thread {
+  animation-name: thread;
   animation-duration: 1.5s;
   animation-delay: 2s;
   animation-fill-mode: both;
@@ -673,12 +699,21 @@ body,
   animation-direction: alternate;
 }
 
-@keyframes swing {
+@keyframes spider {
   from {
     height: 35px;
   }
   to {
-    height: 85px;
+    height: 115px;
+  }
+}
+
+@keyframes thread {
+  from {
+    height: 153px;
+  }
+  to {
+    height: 203px;
   }
 }
 
