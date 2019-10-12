@@ -209,27 +209,27 @@ body,
 
 .navbar {
   padding: 0.1rem 1rem !important;
-  background-color: rgba(252,0,66,0.9);
+  background-color: rgba(252, 0, 66, 0.9);
   color: white !important;
-  height:80px;
+  height: 80px;
 }
 .navbar-brand {
   padding-left: 15px;
 }
 .navbar-toggler {
-  border: none!important;
+  border: none !important;
   outline: 0;
 }
 .navbar-toggler:active,
 .navbar-toggler:focus {
-  outline:0;
+  outline: 0;
 }
 
 @media (max-width: 768px) {
   .navbar {
     background-color: transparent;
     padding: 0.1rem 0rem !important;
-    z-index:5;
+    z-index: 5;
     box-shadow: 5px 5px 5px #000;
   }
   .navbar-brand {
@@ -254,10 +254,10 @@ body,
 .nav-item a:hover {
   text-decoration: none;
 }
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .navbar-collapse {
-    background-color: rgb(252,0,66,0.9);
-    margin-top:15px;
+    background-color: rgb(252, 0, 66, 0.9);
+    margin-top: 15px;
   }
 }
 
@@ -282,8 +282,6 @@ body,
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-
-
 }
 
 .rules-container {
@@ -315,7 +313,7 @@ body,
 .list-container li {
   padding: 7.5px 20px;
 }
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .list-container li {
     padding: 7.5px 5px;
   }
@@ -324,48 +322,85 @@ body,
   }
 }
 
+.leaderboard-container {
+  height: 72vh;
+  width: 40vw;
+  margin: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.4rem;
+  z-index: 5;
+}
+
+/* width */
+.leaderboard-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.leaderboard-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.leaderboard-container::-webkit-scrollbar-thumb {
+  background: #e5023e;
+}
+
+.section-head {
+  text-align: left;
+  padding-left: 40px;
+  border-bottom: 1px solid #fff;
+}
+
+.upper-list {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .leaderboard-container {
+    font-size: 1.1rem;
+    width: 90vw;
+    border-radius: 2px;
+    padding: 5px;
+  }
+  .section-head {
+    text-align: center;
+    padding-left: 0px;
+  }
+  .upper-list {
+    padding: 0;
+  }
+}
+
 /* leaderboard */
 .avatar {
   width: 8vh;
 }
 
-.userlist {
-  width: 60%;
-  margin: auto;
-  padding: 25px;
-}
-
 .avatar-column {
-  width: 20%;
 }
 
 .user-column {
-  width: 65%;
-}
-
-.score-column {
-  width: 15%;
-}
-
-.table td,
-.table th {
-  vertical-align: middle !important;
-}
-
-tbody {
-  display: block;
-  height: 54vh;
-  overflow-y: scroll;
-  font-size: 20px;
+  font-size: 1.4rem;
   font-weight: bold;
-  color: #fff;
+  text-transform: capitalize;
 }
 
-thead,
-tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+.user-email {
+  font-size: 0.7rem;
+}
+.score-column {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.padding-user {
+  padding-left: 2rem;
 }
 
 .dashboard-content {
@@ -377,7 +412,7 @@ tbody tr {
 .question {
   font-size: 1rem;
   font-weight: bold;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   padding: 25px;
   border-radius: 8px;
@@ -388,7 +423,7 @@ tbody tr {
 .answer-block {
   font-size: 1rem;
   font-weight: bold;
-  background: rgba(255,255,255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   padding: 15px;
   padding-left: 25px;
@@ -396,20 +431,36 @@ tbody tr {
   margin: 8px 0;
   color: #fff;
 }
+.leaderboard-padding {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
 @media (max-width: 768px) {
   .question {
     padding: 12px 18px;
   }
-  
+
   .answer-block {
     padding: 12px 18px;
   }
-  
+  .padding-user {
+    padding-left: 0.6rem;
+  }
+  .leaderboard-padding {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .score-column {
+    font-size: 1.6rem;
+  }
+  .user-column {
+    font-size: 1.2rem;
+  }
 }
 
 .answer-block::placeholder {
-  color:rgba(255, 255,255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .answer-block:focus {
@@ -513,10 +564,6 @@ tbody tr {
     padding: 10px;
   }
 
-  .score-column {
-    width: 17%;
-  }
-
   .page-footer {
     position: block !important;
   }
@@ -585,7 +632,7 @@ tbody tr {
   color: #fff;
   font-weight: bold;
   display: inline-block;
-  font-size: 1.3rem!important;
+  font-size: 1.3rem !important;
   width: 152px;
   margin-left: 8px;
   border-radius: 5px;
@@ -629,24 +676,49 @@ tbody tr {
   }
 }
 
-.web {
-  position: absolute;
-  right: -20px;
-  top: 80px;
-  width: 200px;
-  height: 200px;
+/* spider  */
+
+.spider-wrap {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  right: -60px;
+  top: 60px;
 }
+
 @media (max-width: 768px) {
-  .web {
-    width: 150px;
-    height: 150px;
+  .spider-wrap {
+    top: 55px;
     right: -30px;
-    overflow: hidden !important;
   }
 }
 
-#spidy {
-  animation-name: swing;
+.spider-wrap svg {
+  float: right;
+}
+
+.web-svg {
+  height: 355px;
+  width: 250px;
+}
+
+@media (max-width: 768px) {
+  .web-svg {
+    width: 160px;
+    height: 260px;
+  }
+}
+
+.spider-wrap #spidy {
+  animation-name: spider;
+  animation-duration: 1.5s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.spider-wrap #thread {
+  animation-name: thread;
   animation-duration: 1.5s;
   animation-delay: 2s;
   animation-fill-mode: both;
@@ -654,16 +726,25 @@ tbody tr {
   animation-direction: alternate;
 }
 
-@keyframes swing {
+@keyframes spider {
   from {
     height: 35px;
   }
   to {
-    height: 85px;
+    height: 115px;
   }
 }
 
-[type=radio] { 
+@keyframes thread {
+  from {
+    height: 153px;
+  }
+  to {
+    height: 203px;
+  }
+}
+
+[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -671,13 +752,12 @@ tbody tr {
 }
 
 /* IMAGE STYLES */
-[type=radio] + img {
-
+[type="radio"] + img {
   cursor: pointer;
   width: 50%;
 }
 
 /* CHECKED STYLES */
-[type=radio]:checked + img {
+[type="radio"]:checked + img {
   outline: 2px solid #f00;
 }
