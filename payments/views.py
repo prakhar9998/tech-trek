@@ -116,10 +116,10 @@ def response(request):
             if data_dict['STATUS'] == 'TXN_SUCCESS':
                 player.is_paid = True
                 player.save()
-                return HttpResponse("Payment successful.")
+                return render(request, "response.html", {'status': True})
             else:
-                return HttpResponse("Payment unsuccesful.")
-            # return render(request, "response.html", {'paytm': data_dict})
+                # return HttpResponse("Payment unsuccesful.")
+                return render(request, "response.html", {'status': False})
         else:
             return HttpResponse("Checksum verification failed")
     return HttpResponse(status=200)

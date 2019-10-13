@@ -16,6 +16,12 @@ def should_award_badge(player):
         return True, "1"
     elif(player.num_questions_solved == 10):
         return True, "2"
+    elif(player.num_questions_solved == 15):
+        return True, "3"
+    elif(player.num_questions_solved == 20):
+        return True, "4"
+    elif(player.num_questions_solved == 25):
+        return True, "5"
     else:
         return False, None
 

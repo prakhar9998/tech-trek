@@ -31,14 +31,16 @@
     </style>
 </head>
 <body>
-    <h1>{% for key,value in paytm.items %}
-            {{key}} =  {{value}} <br>
-        {% endfor %}</h1>
-
+    {% if status is True %}
+    <h1 style="color: green";>Payment Successful</h1>
+    {% else %}
+    <h1 style="color: red";>Payment Failed. Please try again.</h1>
+    {% endif %}
+    <h2>Redirecting to dashboard...</h2>
     <script>
         setTimeout(() => {
-            window.location.href = 'https://www.google.co.in';
-        }, 4000)
+            window.location.href = 'http://localhost:3000/Dashboard';
+        }, 3000)
     </script>
 </body>
 </html>
