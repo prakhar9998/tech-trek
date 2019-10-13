@@ -4,11 +4,20 @@ body,
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  font-family: 'Proxima Nova';
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/Proxima Nova Regular.ttf');
 }
 
 .centering {
   margin: auto;
 }
+
 .root-container {
   flex-direction: column;
   justify-content: center;
@@ -208,10 +217,18 @@ body,
   background-color: rgba(252, 0, 66, 0.9);
   color: white !important;
   height: 80px;
+  letter-spacing: 0.08ch;
 }
+
 .navbar-brand {
   padding-left: 15px;
+  font-weight: 900;
 }
+
+.nav-item {
+  letter-spacing: 0.1ch;
+}
+
 .navbar-toggler {
   border: none !important;
   outline: 0;
@@ -226,7 +243,7 @@ body,
     background-color: transparent;
     padding: 0.1rem 0rem !important;
     z-index: 8;
-    box-shadow: 5px 5px 5px #000;
+    box-shadow: 5px 3px 5px #000;
   }
   .navbar-brand {
     margin-left: 20px;
@@ -234,6 +251,7 @@ body,
   .navbar-toggler {
     margin-right: 20px !important;
   }
+  
 }
 
 .nav-avatar {
@@ -510,12 +528,24 @@ body,
 .page-footer {
   width: 100%;
   padding: 14px;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.1ch;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
 }
-.bottom-fixed {
-  position: fixed;
-  bottom: 0px;
+
+.page-footer > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.page-footer span {
+  padding: 0 10px;
+}
+
+.page-footer a:hover {
+  text-decoration: none;
 }
 
 .page-footer .text-light:hover {
@@ -547,10 +577,6 @@ body,
     padding: 10px;
   }
 
-  .page-footer {
-    position: block !important;
-  }
-
   .navbar li {
     padding: 3px 0;
   }
@@ -579,14 +605,31 @@ body,
     width: 100% !important;
     margin: 10px auto;
   }
-  @media (max-width: 768px) {
-    .question-container input {
-      margin: 10px 0px 20px 0px;
-    }
+
+  .page-footer {
+    font-size: 13px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  .page-footer span {
+    padding: 4px;
+  }
+
+  .forum-link {
+    display: none;
   }
 
   .badge-grid > div {
     padding: 10px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .question-container input {
+    margin: 10px 0px 20px 0px;
   }
 }
 
@@ -635,9 +678,10 @@ body,
 }
 
 .ques-head {
-  font-weight: bold;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
+  font-weight: bolder;
+  letter-spacing: 0.08ch;
+  font-size: 1.6rem;
+  margin-bottom: 22px;
 }
 
 @media (max-width: 768px) {

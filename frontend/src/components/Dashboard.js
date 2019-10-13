@@ -287,16 +287,14 @@ class Dashboard extends Component {
             </div>
 
             <div>
-              <h4
-                className="text-center font-weight-bold pb-4 mt-3"
-                style={{ borderBottom: "1px solid #fff" }}
-              >
-                LEVEL : {this.state.currQ} &nbsp; SCORE: {this.state.score}
-              </h4>
+            <h4
+              className="text-center font-weight-bold pb-4 mt-3"
+              style={{ borderBottom: "1px solid #fff" }}
+            >
+              LEVEL : {this.state.currQ} &nbsp; SCORE : {this.state.score}
+            </h4>
 
-              <h4 className="text-center font-weight-bold pt-3">
-                ACHIEVEMENTS
-              </h4>
+            <h4 className="text-center font-weight-bold pt-4">ACHIEVEMENTS</h4>
               <Achievements />
             </div>
           </div>
