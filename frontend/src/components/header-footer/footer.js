@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <div>
-      <footer className=" text-white d-md-block text-center page-footer bottom-fixed">
+      <footer className=" text-white d-md-block text-center page-footer">
         <div>
         <span className="text-light font-weight-bolder">
           DEVELOPED BY : <Link to="http://hackncs.com/"><span className="font-weight-normal">NIBBLE COMPUTER SOCIETY</span></Link>
