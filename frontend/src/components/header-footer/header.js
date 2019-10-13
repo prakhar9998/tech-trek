@@ -17,7 +17,8 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
       users: "",
-      tokenlength: 0
+      tokenlength: 0,
+      avatar_no: 1
     };
   }
   componentDidMount() {
@@ -33,8 +34,10 @@ class Header extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
+        console.log();
         this.setState({
-          users: response.username
+          users: response.username,
+          avatar_no: response.avatar_no
         });
       });
     if (localStorage.getItem("logintoken") !== null)
@@ -51,11 +54,19 @@ class Header extends React.Component {
     localStorage.clear("logintoken");
   };
   render() {
+    const avtarCollection = {
+      1: "https://i.ibb.co/TbRZ9b7/Group-11.png",
+      2: "https://i.ibb.co/GnNz6rK/Group-14.png",
+      3: "https://i.ibb.co/Y3jzNNV/Group-12.png",
+      4: "https://i.ibb.co/9tNg7VW/Group-15.png",
+      5: "https://i.ibb.co/r2pXhbD/Group-16.png",
+      6: "https://i.ibb.co/9tNg7VW/Group-15.png"
+    };
     return (
       <Navbar dark expand="md" sticky="top">
         <NavbarBrand href="/">
           <img
-            src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"
+            src={avtarCollection[this.state.avatar_no]}
             alt=""
             className="nav-avatar"
           />
