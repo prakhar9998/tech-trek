@@ -42,7 +42,7 @@ class Rules extends Component {
             />
           </svg>
         </div>
-        <div style={{ zIndex: "5" }}>
+        <div style={{ zIndex: "2" }}>
           <div className="rules-container mt-5">
             <h3 className="section-head  pt-4 pb-3">RULES</h3>
             <div className="upper-list">
