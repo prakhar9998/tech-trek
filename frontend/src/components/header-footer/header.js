@@ -52,7 +52,7 @@ class Header extends React.Component {
   };
   render() {
     return (
-      <Navbar dark expand="md">
+      <Navbar dark expand="md" sticky="top">
         <NavbarBrand href="/">
           <img
             src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"

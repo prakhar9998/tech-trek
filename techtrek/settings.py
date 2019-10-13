@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'badges',
     'corsheaders',
     'rest_framework',
+    'payments',
     # 'rest_framework.authtoken',
 ]
 
@@ -86,7 +87,7 @@ ROOT_URLCONF = 'techtrek.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -152,3 +153,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+PAYTM_MERCHANT_KEY = "#nR%j@LUkBqgIlI%"
+PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
+HOST_URL = "http://localhost:8000"
+PAYTM_CALLBACK_URL = "/paytm/response/"
+PAYTM_WEBSITE = 'WEBSTAGING'

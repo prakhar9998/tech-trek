@@ -19,9 +19,7 @@ class App extends Component {
     this.showAvatar = this.showAvatar.bind(this);
   }
   componentDidMount() {
-    let tokenlength;
     if (localStorage.getItem("logintoken")) {
-      tokenlength = localStorage.getItem("logintoken").length;
       this.setState({
         loginOpen: true
       });
