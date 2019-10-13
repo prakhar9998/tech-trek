@@ -40,8 +40,10 @@ class Register extends Component {
       .send(payload)
       .then(res => {
         localStorage.setItem("logintoken", res.body.token.access);
-        if (res.body.token.access && res.body.token.access.length > 10)
+        if (res.body.token.access && res.body.token.access.length > 10) {
           this.props.onSuccessfulLogin();
+          window.location.reload();
+        }
       })
       .catch(err => {
         if (err && err.response && err.response.body) {
@@ -109,7 +111,7 @@ class Register extends Component {
     if (this.state.username === "") {
       this.Validation("username", "Username will be your identity, don't skip");
     }
-    if (this.state.password === "" || this.state.password.length < 7) {
+    if (this.state.password === "") {
       this.Validation("password", "Password lenght should be greater than 6");
     }
     if (
@@ -138,8 +140,6 @@ class Register extends Component {
   };
 
   render() {
-    const { isAuthenticated } = this.state;
-
     let admissionErr = null,
       usernameErr = null,
       passwordErr = null,

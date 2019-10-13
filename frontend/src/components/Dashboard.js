@@ -49,7 +49,6 @@ class Dashboard extends Component {
     })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
         let badges = [];
@@ -63,7 +62,6 @@ class Dashboard extends Component {
           score: responseJson.player_info.score,
           badgeArray: badges
         });
-        console.log(responseJson);
         this.setState({
           isPaid: responseJson.player_info.is_paid
         });
@@ -206,10 +204,10 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.state.badgeArray);
     return (
       <div className="dashboard">
         <Header />
+
         <div className="spider-wrap">
           <svg
             xmlns="http://www.w3.org/2000/svg"

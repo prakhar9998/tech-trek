@@ -148,7 +148,7 @@ body,
 }
 
 .danger-error {
-  color: #e74c3c;
+  color: #e5023e;
   font-size: 0.7rem;
 }
 
@@ -888,6 +888,14 @@ body,
   justify-content: center;
   align-items: center;
 }
+.containerdata .ill2 {
+  height: 80vh;
+  width: 55%;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .containerdata .logo-wrap {
   height: 324px;
   width: 391px;
@@ -978,6 +986,10 @@ body,
 
   /* ill */
   .containerdata .ill {
+    height: 50%;
+    width: 100%;
+  }
+  .containerdata .ill2 {
     height: 50%;
     width: 100%;
   }
@@ -1249,6 +1261,17 @@ body,
   margin-right: 2rem !important;
 }
 
+.web-pumpkin {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.web-pumpkin2 {
+  position: absolute;
+  left: 0;
+  top: 80px;
+}
+
 @media (max-width: 768px) {
   .modal-dialog {
     max-width: 95vw !important;
@@ -1258,4 +1281,88 @@ body,
     margin-left: 1rem !important;
     margin-right: 1rem !important;
   }
+  .web-pumpkin2 {
+    display: none;
+  }
+}
+
+.aa {
+  opacity: 0.95;
+}
+.bb {
+  fill: #3b3a4a;
+}
+.cc {
+  fill: #a8a3a4;
+}
+.dd {
+  fill: #aea6a4;
+}
+.ee,
+.gg,
+.hh,
+.ii {
+  fill: #fff;
+}
+.ee {
+  opacity: 0.8;
+}
+.ff {
+  fill: #351402;
+  opacity: 0.2;
+}
+.gg {
+  opacity: 0.5;
+}
+.hh {
+  opacity: 0.1;
+}
+.jj {
+  fill: #24243e;
+}
+.kk {
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+.ll {
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0% {
+    fill: #16152f;
+  }
+  20% {
+    fill: rgba(229, 2, 62, 0.6);
+  }
+  40% {
+    fill: #16152f;
+  }
+  60% {
+    fill: rgba(229, 2, 62, 1);
+  }
+  80% {
+    fill: #16152f;
+  }
+}
+
+.mm {
+  fill: #23233d;
+}
+.nn {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 1.5px;
+}
+
+.paytm:hover {
+  cursor: pointer;
 }
