@@ -734,6 +734,13 @@ body,
   transform: scale(1.2);
 }
 
+.nonpaid-page {
+  height: calc(100vh - 80px);
+  background: url("https://gs-post-images.grdp.co/2019/10/artboard-1-img1570818243116-71.png-rs-high-webp.png");
+  background-size: cover;
+  color: #fff;
+}
+
 /*Main Page*/
 
 .landing-page {
