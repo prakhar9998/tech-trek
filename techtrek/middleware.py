@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 class TimeMiddleware(object):
     def __init__(self, get_response):
@@ -10,12 +10,15 @@ class TimeMiddleware(object):
         return self.get_response(request)
 
     def process_view(self, request, callback, callback_args, callback_kwargs):
-        # TODO: add paytm url after merging the 'payments' branch
         if request.path.startswith('/accounts/'):
+            return None
+        if request.path.startswith('/paytm/'):
             return None
         print(datetime.now(), settings.START_TIME)
         if datetime.now() < settings.START_TIME:
-            return HttpResponse("hol' up")
+            return JsonResponse({
+                "timeToStart": settings.START_TIME - datetime.now()
+            })
         if datetime.now() > settings.END_TIME:
             return HttpResponse("ENDED")
         return None
