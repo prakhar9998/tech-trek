@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from .secrets import KEY
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,6 +76,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'techtrek.middleware.TimeMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -138,13 +139,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -154,6 +155,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# TIME MIDDLEWARE SETTINGS
+
+# CAUTION: USE DIFFERENT TIMES IN PRODUCTION
+START_TIME = datetime(2019, 10, 13, 12, 26, 0)
+END_TIME = datetime(2019, 10, 13, 12, 27, 5)
 PAYTM_MERCHANT_KEY = "#nR%j@LUkBqgIlI%"
 PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
 HOST_URL = "http://localhost:8000"
