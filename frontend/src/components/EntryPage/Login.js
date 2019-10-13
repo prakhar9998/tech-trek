@@ -64,14 +64,12 @@ class Login extends Component {
           });
           this.props.onSuccessfulLogin();
         })
-       
- 
-      .catch(err => {
-        console.log("err", err);
-        this.Validation("logintoken", "Invalid Credentials")
-      });
-  }
- 
+
+        .catch(err => {
+          console.log("err", err);
+          this.Validation("logintoken", "Invalid Credentials");
+        });
+    }
   }
   isAuthenticated() {
     const token = localStorage.getItem("token");
@@ -94,21 +92,19 @@ class Login extends Component {
     }
 
     return (
-      <div className="inner-container">
-        <div className="header">Login</div>
-        <div className="box">
+      <div className="">
+        <div>
           <form
-            className="form-signin"
+            className="form-signin mt-4"
             onSubmit={this.submitForm.bind(this)}
-            name="mail"
           >
-            <h2 className="form-signin-heading">Please login</h2>
             <input
               type="text"
               className="form-control"
               value={this.state.username}
               onChange={this.handleuserNameChanged.bind(this)}
-              placeholder="User Name"
+              placeholder="Username"
+              style={{ fontSize: "1rem" }}
             />
             <small className="danger-error">
               {usernameErr ? usernameErr : ""}
@@ -122,18 +118,20 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.handlePasswordChanged.bind(this)}
             />
+            <br />
+
+            <button
+              className="btn btn-lg btn-primary btn-block mb-2"
+              type="submit"
+            >
+              Login
+            </button>
+            <small className="danger-error">{loginErr ? loginErr : ""}</small>
             <small className="danger-error">
               {passwordErr ? passwordErr : ""}
             </small>
-            <br />
-            <br />
-            <small className="danger-error">{loginErr ? loginErr : ""}</small>
-            <button className="btn btn-lg btn-primary btn-block" type="submit">
-              Login
-            </button>
           </form>
         </div>
-        
       </div>
     );
   }
