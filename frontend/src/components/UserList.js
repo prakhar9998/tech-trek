@@ -1,8 +1,15 @@
 import React from "react";
-import { Table } from "reactstrap";
 
 class UserList extends React.Component {
   render() {
+    const avtarCollection = {
+      1: "https://i.ibb.co/TbRZ9b7/Group-11.png",
+      2: "https://i.ibb.co/GnNz6rK/Group-14.png",
+      3: "https://i.ibb.co/Y3jzNNV/Group-12.png",
+      4: "https://i.ibb.co/9tNg7VW/Group-15.png",
+      5: "https://i.ibb.co/r2pXhbD/Group-16.png",
+      6: "https://i.ibb.co/9tNg7VW/Group-15.png"
+    };
     return (
       <div style={{ zIndex: "5" }}>
         <div className="leaderboard-container mt-5">
@@ -16,7 +23,7 @@ class UserList extends React.Component {
                 >
                   <div className="align-items-center d-flex">
                     <img
-                      src="https://i.pinimg.com/originals/27/47/ed/2747edad39a6a4e9fbcfbf3c53822649.png"
+                      src={avtarCollection[listitem.avatar_no]}
                       alt=""
                       className="avatar"
                     />
@@ -24,9 +31,7 @@ class UserList extends React.Component {
                       <span className="user-column ">
                         {listitem.player_name}
                       </span>
-                      <span className="user-email">
-                        vishnoi.kunal0@gmail.com
-                      </span>
+                      <span className="user-email">{listitem.email}</span>
                     </div>
                   </div>
                   <span className="score-column">{listitem.score}</span>

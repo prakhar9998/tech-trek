@@ -4,6 +4,7 @@ import Footer from "./header-footer/footer";
 import Question from "./Question";
 import Achievements from "./Achievements";
 import Timer from "./timer";
+import NonPaid from "./nonpaid";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,9 @@ class Dashboard extends Component {
       score: "",
       question: "",
       isTimeLeft: false,
-      remainingTime: 0
+      remainingTime: 0,
+      isPaid: "",
+      badgeArray: []
     };
   }
 
@@ -48,10 +51,21 @@ class Dashboard extends Component {
       .then(responseJson => {
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
+        let badges = [];
+        if (responseJson.badges) {
+          responseJson.badges.map(data => {
+            badges.push(Object.values(data)[0]);
+          });
+        }
         this.setState({
-          currQ: responseJson.current_question,
-          score: responseJson.score
+          currQ: responseJson.player_info.current_question,
+          score: responseJson.player_info.score,
+          badgeArray: badges
         });
+        this.setState({
+          isPaid: responseJson.player_info.is_paid
+        });
+
         if (responseJson.isTimeLeft === true) {
           this.setState({
             isTimeLeft: true,
@@ -106,9 +120,14 @@ class Dashboard extends Component {
                 responseJson &&
                 responseJson.detail &&
                 responseJson.detail.question;
+              let badges = [];
+              responseJson.badges.map(data => {
+                badges.push(Object.values(data)[0]);
+              });
               this.setState({
-                currQ: responseJson.current_question,
-                score: responseJson.score
+                currQ: responseJson.player_info.current_question,
+                score: responseJson.player_info.score,
+                badgeArray: badges
               });
 
               if (responseJson.isTimeLeft === true) {
@@ -188,6 +207,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Header />
+
         <div className="spider-wrap">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -219,74 +239,80 @@ class Dashboard extends Component {
             />
           </svg>
         </div>
-        <div className="dashboard-content pt-3 mt-5" style={{ zIndex: "1" }}>
-          <div className="question-container">
-            <div style={{ margin: "auto" }}>
-              <div className="input-group">
-                <h4 className="text-left ques-head">QUESTION</h4>
-                {this.state.isTimeLeft ? (
-                  <>
-                    <Question ques="Hold your Horses! next question coming up soon !!" />
-                    <div>
-                      <input
-                        className="answer-block"
-                        type="text"
-                        placeholder="Patience is power....."
-                        disabled
-                      />
-                      <div className="btn-time btn py-2 px-2">
-                        <Timer
-                          displayQuestion={this.displayQuestion}
-                          time={Math.ceil(this.state.remainingTime)}
-                        />
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Question ques={this.state.question} />
-                    <form onSubmit={this.answerSubmit}>
+        {this.state.isPaid === "False" ? (
+          <NonPaid />
+        ) : (
+          <div className="dashboard-content pt-3 mt-5" style={{ zIndex: "1" }}>
+            <div className="question-container">
+              <div style={{ margin: "auto" }}>
+                <div className="input-group">
+                  <h4 className="text-left ques-head">QUESTION</h4>
+                  {this.state.isTimeLeft ? (
+                    <>
+                      <Question ques="Hold your Horses! next question coming up soon !!" />
                       <div>
                         <input
                           className="answer-block"
                           type="text"
-                          placeholder="I seek an Answer...."
-                          ref="answer"
-                          onChange={this.onAnswerChange}
-                          required
+                          placeholder="Patience is power....."
+                          disabled
                         />
-                        <button className="btn btn-primary check-btn py-2 px-2">
-                          <b> CHECK</b>
-                        </button>
+                        <div className="btn-time btn py-2 px-2">
+                          <Timer
+                            displayQuestion={this.displayQuestion}
+                            time={Math.ceil(this.state.remainingTime)}
+                          />
+                        </div>
                       </div>
+                    </>
+                  ) : (
+                    <>
+                      <Question ques={this.state.question} />
+                      <form onSubmit={this.answerSubmit}>
+                        <div>
+                          <input
+                            className="answer-block"
+                            type="text"
+                            placeholder="I seek an Answer...."
+                            ref="answer"
+                            onChange={this.onAnswerChange}
+                            required
+                          />
+                          <button className="btn btn-primary check-btn py-2 px-2">
+                            <b> CHECK</b>
+                          </button>
+                        </div>
 
-                      <div style={{ color: "red" }}>
-                        <p>{this.state.selectedError} &nbsp;</p>
-                      </div>
-                      <div style={{ color: "green" }}>
-                        <p>{this.state.selectedSuccess}</p>
-                      </div>
-                    </form>
-                  </>
-                )}
+                        <div style={{ color: "red" }}>
+                          <p>{this.state.selectedError} &nbsp;</p>
+                        </div>
+                        <div style={{ color: "green" }}>
+                          <p>{this.state.selectedSuccess}</p>
+                        </div>
+                      </form>
+                    </>
+                  )}
+                </div>
+
+                <br />
               </div>
+            </div>
 
-              <br />
+            <div>
+              <h4
+                className="text-center font-weight-bold pb-4 mt-3"
+                style={{ borderBottom: "1px solid #fff" }}
+              >
+                LEVEL : {this.state.currQ} &nbsp; SCORE : {this.state.score}
+              </h4>
+
+              <h4 className="text-center font-weight-bold pt-4">
+                ACHIEVEMENTS
+              </h4>
+              <Achievements badges={this.state.badgeArray} />
             </div>
           </div>
-
-          <div>
-            <h4
-              className="text-center font-weight-bold pb-4 mt-3"
-              style={{ borderBottom: "1px solid #fff" }}
-            >
-              LEVEL : {this.state.currQ} &nbsp; SCORE: {this.state.score}
-            </h4>
-
-            <h4 className="text-center font-weight-bold pt-3">ACHIEVEMENTS</h4>
-            <Achievements />
-          </div>
-        </div>
+        )}
 
         <Footer />
       </div>

@@ -7,13 +7,14 @@ BADGE_CHOICES = (
     ("1", "level1"),
     ("2", "level2"),
     ("3", "level3"),
-    ("4", "solved first"),
+    ("4", "level4"),
+    ("5", "level5"),
+    ("6", "solved first"),
 )
 
 class Badge(models.Model):
     description = models.CharField(max_length=255)
     badge_type = models.CharField(max_length=1, choices=BADGE_CHOICES)
-    icon = models.ImageField(upload_to='img/badges')
     player = models.ManyToManyField(Player, related_name="badges", through="BadgeToPlayer")
     one_time_only = models.BooleanField(default=True)
 
@@ -59,3 +60,7 @@ class BadgeToPlayer(models.Model):
 
     awarded_at = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
+
+class ActiveBadgeToPlayerManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)

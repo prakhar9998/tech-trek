@@ -1,4 +1,6 @@
 from rest_framework import permissions
+from rest_framework.exceptions import APIException
+from rest_framework import status
 from datetime import datetime
 
 class IsPaid(permissions.BasePermission):
@@ -8,7 +10,19 @@ class IsPaid(permissions.BasePermission):
     message = "Only paid users can access this."
     
     def has_object_permission(self, request, view, obj):
-        return obj.is_paid
+        if obj.is_paid:
+            return True
+        raise RequirePayment()
+
+class RequirePayment(APIException):
+    status_code = status.HTTP_403_FORBIDDEN
+    default_detail = {
+        'player_info': {
+            'is_paid': False,
+        },
+        'message': "Only paid users can access this."
+    }
+    
 
 # class IsTimeOver(permissions.BasePermission):
 #     """

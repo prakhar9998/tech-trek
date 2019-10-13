@@ -11,8 +11,7 @@ from datetime import datetime
 from django.db.models import Count
 
 from questions.api.serializers import (
-    GetQuestionSerializer,
-    QuestionSerializer,
+    PlayerInfoSerializer,
     LeaderboardSerializer,
 )
 
@@ -34,21 +33,20 @@ class GetQuestion(views.APIView):
             # TODO: add utility function for fetching question.
             q = Question.objects.get(level=player.current_question)
             q_text = q.question
-
+        
+        player_info_serializer = PlayerInfoSerializer(player)
         queryset = player.badges.annotate(total=Count('badge_type'))
         badge_serializer = BadgesSerializer(queryset, many=True)
 
         return Response({
-                "username": player.username,
-                "is_paid": player.is_paid,
-                "current_question": player.current_question,
-                "score": player.score,
+                "player_info": player_info_serializer.data,
                 "isTimeLeft": bool(time_left),
                 "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text,
                     "time_left": time_left,
                 }
+                
             })
 
     def post(self, request, format=None):
@@ -77,7 +75,7 @@ class GetQuestion(views.APIView):
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
                     .update(is_level_solved=True)
-                badge = Badge.objects.get(badge_type="4")
+                badge = Badge.objects.get(badge_type="6")
                 print("AWARDING...")
                 badge.award_to(player)
 
