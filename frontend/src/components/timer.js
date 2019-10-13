@@ -43,11 +43,17 @@ const Timer = props => {
         justifyContent: "center"
       }}
     >
-      <span>{h}</span>
-      <span className="px-2">:</span>
-      <span>{m}</span>
-      <span className="px-2">:</span>
-      <span>{s}</span>
+      <span className="text-white" style={{ fontWeight: "bold" }}>
+        {h}
+      </span>
+      <span className="px-2 text-white">:</span>
+      <span className="text-white" style={{ fontWeight: "bold" }}>
+        {m}
+      </span>
+      <span className="px-2 text-white">:</span>
+      <span className="text-white" style={{ fontWeight: "bold" }}>
+        {s}
+      </span>
     </div>
   );
 };

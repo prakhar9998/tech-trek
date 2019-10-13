@@ -25,9 +25,9 @@ class Avatar extends Component {
                 defaultChecked
               />
               <img
-                src="https://i.ibb.co/TbRZ9b7/Group-11.png"
+                src="https://i.ibb.co/3rYDYp8/A1.png"
                 alt="avatar01"
-                width="80%"
+                width="100%"
               />
             </label>
           </div>
@@ -41,7 +41,7 @@ class Avatar extends Component {
               />
               <img
                 src="https://i.ibb.co/GnNz6rK/Group-14.png"
-                width="80%"
+                width="100%"
                 alt="avatar02"
               />
             </label>
@@ -56,7 +56,7 @@ class Avatar extends Component {
               />
               <img
                 src="https://i.ibb.co/Y3jzNNV/Group-12.png"
-                width="80%"
+                width="100%"
                 alt="avatar03"
               />
             </label>
@@ -71,7 +71,7 @@ class Avatar extends Component {
               />
               <img
                 src="https://i.ibb.co/9tNg7VW/Group-15.png"
-                width="80%"
+                width="100%"
                 alt="avatar04"
               />
             </label>
@@ -86,7 +86,7 @@ class Avatar extends Component {
               />
               <img
                 src="https://i.ibb.co/r2pXhbD/Group-16.png"
-                width="80%"
+                width="100%"
                 alt="avatar05"
               />
             </label>
@@ -100,9 +100,9 @@ class Avatar extends Component {
                 onChange={this.avatarNumber}
               />
               <img
-                src="https://i.ibb.co/9tNg7VW/Group-15.png"
+                src="https://i.ibb.co/pyYKwXL/A6.png"
                 alt="avatar06"
-                width="80%"
+                width="100%"
               />
             </label>
           </div>

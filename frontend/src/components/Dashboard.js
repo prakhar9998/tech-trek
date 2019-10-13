@@ -35,7 +35,8 @@ class Dashboard extends Component {
       question: "",
       isTimeLeft: false,
       remainingTime: 0,
-      isPaid: ""
+      isPaid: "",
+      badgeArray: []
     };
   }
 
@@ -51,10 +52,18 @@ class Dashboard extends Component {
         console.log(responseJson);
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
+        let badges = [];
+        if (responseJson.badges) {
+          responseJson.badges.map(data => {
+            badges.push(Object.values(data)[0]);
+          });
+        }
         this.setState({
           currQ: responseJson.player_info.current_question,
-          score: responseJson.player_info.score
+          score: responseJson.player_info.score,
+          badgeArray: badges
         });
+        console.log(responseJson);
         this.setState({
           isPaid: responseJson.player_info.is_paid
         });
@@ -113,9 +122,14 @@ class Dashboard extends Component {
                 responseJson &&
                 responseJson.detail &&
                 responseJson.detail.question;
+              let badges = [];
+              responseJson.badges.map(data => {
+                badges.push(Object.values(data)[0]);
+              });
               this.setState({
                 currQ: responseJson.player_info.current_question,
-                score: responseJson.player_info.score
+                score: responseJson.player_info.score,
+                badgeArray: badges
               });
 
               if (responseJson.isTimeLeft === true) {
@@ -192,7 +206,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.state.isPaid);
+    console.log(this.state.badgeArray);
     return (
       <div className="dashboard">
         <Header />
@@ -287,15 +301,17 @@ class Dashboard extends Component {
             </div>
 
             <div>
-            <h4
-              className="text-center font-weight-bold pb-4 mt-3"
-              style={{ borderBottom: "1px solid #fff" }}
-            >
-              LEVEL : {this.state.currQ} &nbsp; SCORE : {this.state.score}
-            </h4>
+              <h4
+                className="text-center font-weight-bold pb-4 mt-3"
+                style={{ borderBottom: "1px solid #fff" }}
+              >
+                LEVEL : {this.state.currQ} &nbsp; SCORE : {this.state.score}
+              </h4>
 
-            <h4 className="text-center font-weight-bold pt-4">ACHIEVEMENTS</h4>
-              <Achievements />
+              <h4 className="text-center font-weight-bold pt-4">
+                ACHIEVEMENTS
+              </h4>
+              <Achievements badges={this.state.badgeArray} />
             </div>
           </div>
         )}

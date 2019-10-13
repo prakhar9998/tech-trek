@@ -205,7 +205,7 @@ class App extends Component {
                   <div className="logo-wrap" style={{ zIndex: "5" }}>
                     <img
                       className="logo"
-                      src="https://gs-post-images.grdp.co/2019/10/logo-img1570905617416-54.png-rs-high-webp.png"
+                      src="https://i.ibb.co/7nKtf0q/Logo-1cloud.png"
                       alt=""
                     />
                   </div>

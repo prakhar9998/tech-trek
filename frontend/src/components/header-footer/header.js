@@ -60,7 +60,7 @@ class Header extends React.Component {
       3: "https://i.ibb.co/Y3jzNNV/Group-12.png",
       4: "https://i.ibb.co/9tNg7VW/Group-15.png",
       5: "https://i.ibb.co/r2pXhbD/Group-16.png",
-      6: "https://i.ibb.co/9tNg7VW/Group-15.png"
+      6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
     return (
       <Navbar dark expand="md" sticky="top">
