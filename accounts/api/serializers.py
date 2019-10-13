@@ -80,6 +80,7 @@ class PlayerDashboardSerializer(serializers.ModelSerializer):
             'is_paid',
             'current_question',
             'score',
+            'avatar_no',
         ]
 
 class PlayerListSerializer(serializers.ModelSerializer):
