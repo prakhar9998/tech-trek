@@ -47,114 +47,17 @@ class Rules extends Component {
             <h3 className="section-head  pt-4 pb-3">RULES</h3>
             <div className="upper-list">
               <ul className="list-container">
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
-                <li>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Reprehenderit recusandae porro non suscipit culpa sapiente
-                  excepturi nulla nostrum ipsa, veniam voluptates! Beatae, minus
-                  voluptate!
-                </li>
+                    <li>This is an ONLINE event which will be live from 16 OCT 2019 and will last for three days (16 OCT 2019 to 18 OCT 2019).</li>
+                    <li>Each question will bring you closer to your destination.</li>
+                    <li>Each level will take you to the two paths. One of which is going to be the technical one and other is the non-technical one.</li>
+                    <li>The TECHNICAL answer will earn you 10 points and the NON-TECHNICAL answer will earn you 5 points.</li>
+                    <li>Some questions will test your luck where you have to choose 1 of the 3 boxes. You will win Special badges if you answer them correctly.</li>
+                    <li>The answers are to be written <strong> only in lowercase </strong>. Special symbols, numerics and spaces are not allowed.Example : If an answer is "christopher nolan" submit it as "christophernolan" without any special character.</li>
+                    <li>No backtracking is allowed i.e If your answer is accepted for a particular question  then you cannot revert back to the same question again.</li>
+                    <li>The HINTS to each level will be disclosed on the FORUM of *facebook* page of NIBBLE COMPUTER SOCIETY.(  Please do not message personally on the page or anybody related to NCS regarding hints. Every possible hint for each level will be displayed on the page itself.)</li>
+                    <li> In case of any discrepancy, the judgement of Nibble Computer Society will be the final .</li>
+                    <li>The winner will be announced on the Facebook page and on the Infoconnect as well, after the game terminates.</li>
+                    <li class="hidden"> In recognition of an outstanding achievement, the winners will be rewarded with exciting goodies  and the winners of first and second years will also be given a  chance to sit directly in the second round of the NCS recruitment session.</li>
               </ul>
             </div>
           </div>

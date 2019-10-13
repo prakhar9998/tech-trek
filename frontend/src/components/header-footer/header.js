@@ -64,13 +64,13 @@ class Header extends React.Component {
     };
     return (
       <Navbar dark expand="md" sticky="top">
-        <NavbarBrand href="/">
+        <NavbarBrand href="/Dashboard">
           <img
             src={avtarCollection[this.state.avatar_no]}
             alt=""
             className="nav-avatar"
           />
-          <span className="pl-2">{this.state.users}</span>
+          <span className="pl-3">{this.state.users}</span>
         </NavbarBrand>
 
         <NavbarToggler onClick={this.toggle} />

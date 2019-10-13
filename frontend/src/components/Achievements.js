@@ -10,7 +10,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-1</p>
+          <p>Badge 1</p>
         </div>
         <div className="text-center">
           <img
@@ -18,7 +18,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-2</p>
+          <p>Badge 2</p>
         </div>
         <div className="text-center">
           <img
@@ -26,7 +26,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-3</p>
+          <p>Badge 3</p>
         </div>
         <div className="text-center">
           <img
@@ -34,7 +34,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-4</p>
+          <p>Badge 4</p>
         </div>
         <div className="text-center">
           <img
@@ -42,7 +42,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-5</p>
+          <p>Badge 5</p>
         </div>
         <div className="text-center">
           <img
@@ -50,7 +50,7 @@ class Achievements extends Component {
             src="https://cdna.artstation.com/p/assets/images/images/006/102/672/large/brice-laville-saint-martin-neytiri-01.jpg?1496079157"
             alt="avatar01"
           />
-          <p>Badge-6</p>
+          <p>Badge 6</p>
         </div>
       </div>
     );
