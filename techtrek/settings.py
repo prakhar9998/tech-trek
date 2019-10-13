@@ -155,5 +155,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # TIME MIDDLEWARE SETTINGS
-START_TIME = datetime(2019, 10, 13, 3, 19, 0)
-END_TIME = datetime(2019, 10, 13, 3, 20, 5)
+START_TIME = datetime(2019, 10, 13, 12, 26, 0)
+END_TIME = datetime(2019, 10, 13, 12, 27, 5)
