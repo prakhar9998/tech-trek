@@ -52,8 +52,8 @@ class Dashboard extends Component {
         const ques =
           responseJson && responseJson.detail && responseJson.detail.question;
         this.setState({
-          currQ: responseJson.current_question,
-          score: responseJson.score
+          currQ: responseJson.player_info.current_question,
+          score: responseJson.player_info.score
         });
         this.setState({
           isPaid: responseJson.player_info.is_paid
@@ -114,8 +114,8 @@ class Dashboard extends Component {
                 responseJson.detail &&
                 responseJson.detail.question;
               this.setState({
-                currQ: responseJson.current_question,
-                score: responseJson.score
+                currQ: responseJson.player_info.current_question,
+                score: responseJson.player_info.score
               });
 
               if (responseJson.isTimeLeft === true) {

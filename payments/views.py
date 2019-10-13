@@ -93,7 +93,8 @@ class Payment(APIView):
         param_dict = data_dict
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(data_dict, MERCHANT_KEY)
         
-        return render(request, "payment.html", {'paytmdict': param_dict})
+        return Response(param_dict)
+        # return render(request, "payment.html", {'paytmdict': param_dict})
         # return Response({''})
 
 @csrf_exempt

@@ -1,6 +1,34 @@
 import React from "react";
 
 const NonPaid = () => {
+  const handleClick = () => {
+    const localtoken = localStorage.getItem("logintoken");
+
+    fetch("http://localhost:8000/paytm/payment", {
+      method: "get",
+      headers: { Authorization: `Bearer ${localtoken}` }
+    })
+      .then(response => response.json())
+      .then(responseJson => {
+        const form = document.createElement("form");
+        form.method = "post";
+        form.action = "https://securegw-stage.paytm.in/order/process";
+
+        for (const key in responseJson) {
+          if (responseJson.hasOwnProperty(key)) {
+            const hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = key;
+            hiddenField.value = responseJson[key];
+
+            form.appendChild(hiddenField);
+          }
+        }
+        document.body.appendChild(form);
+        console.log("FORM", form);
+        form.submit();
+      });
+  };
   return (
     <div className="nonpaid-page" style={{ overflowY: "hidden" }}>
       <div className="cloud1-wrap" style={{ fill: "white" }}>
@@ -44,7 +72,10 @@ const NonPaid = () => {
         </div>
         <div className="info">
           <div className="text-center" style={{ zIndex: "10" }}>
-            <a href="localhost:8000/paytm/payment">Pay Now</a>
+            <button className="btn btn-primary" onClick={handleClick}>
+              Pay now
+            </button>
+            {/* <a href="http://localhost:8000/paytm/payment">Pay Now</a> */}
           </div>
         </div>
       </div>
