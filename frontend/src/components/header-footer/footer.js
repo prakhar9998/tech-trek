@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,7 +7,11 @@ const Footer = () => {
         <div>
           <span className="text-light font-weight-bolder">
             DEVELOPED BY :
-            <a href="http://hackncs.com/" target="_blank">
+            <a
+              href="http://hackncs.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <span className="font-weight-normal">
                 NIBBLE COMPUTER SOCIETY
               </span>
@@ -19,6 +22,7 @@ const Footer = () => {
             <a
               href="https://www.facebook.com/nibblecomputersociety"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span className="font-weight-normal">FORUM FOR TREKKING</span>
             </a>
