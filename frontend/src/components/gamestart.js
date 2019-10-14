@@ -229,30 +229,30 @@ const GameStart = props => {
           </div>
         </div>
         <div className="info">
-          <div class="heading">
+          <div className="heading">
             <p>LET THE SPOOKY TREK START IN</p>
           </div>
 
-          <div class="count">
-            <div class="element">
-              <p class="num" id="hour">
+          <div className="count">
+            <div className="element">
+              <p className="num" id="hour">
                 {h}
               </p>
-              <p class="alpha">HOURS</p>
+              <p className="alpha">HOURS</p>
             </div>
-            <p class="colon">:</p>
-            <div class="element">
-              <p class="num" id="min">
+            <p className="colon">:</p>
+            <div className="element">
+              <p className="num" id="min">
                 {m}
               </p>
-              <p class="alpha">MINUTES</p>
+              <p className="alpha">MINUTES</p>
             </div>
-            <p class="colon">:</p>
-            <div class="element">
-              <p class="num" id="sec">
+            <p className="colon">:</p>
+            <div className="element">
+              <p className="num" id="sec">
                 {s}
               </p>
-              <p class="alpha">SECONDS</p>
+              <p className="alpha">SECONDS</p>
             </div>
           </div>
         </div>

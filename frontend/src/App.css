@@ -5,6 +5,7 @@ body,
   height: 100%;
   box-sizing: border-box;
   font-family: "Proxima Nova";
+  overflow-x: hidden !important;
 }
 
 @font-face {
@@ -1282,6 +1283,9 @@ body,
     margin-right: 1rem !important;
   }
   .web-pumpkin2 {
+    display: none;
+  }
+  .web-pumpkin {
     display: none;
   }
 }
