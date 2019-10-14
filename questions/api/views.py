@@ -1,8 +1,8 @@
 from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from utils.permissions import IsPaid
+from rest_framework.decorators import api_view, permission_classes
+from utils.permissions import IsPaid, GameStarted
 from utils.badges import should_award_badge
 from questions.models import Question
 from accounts.models import Player
@@ -18,7 +18,7 @@ from questions.api.serializers import (
 from badges.api.serializers import BadgesSerializer
 
 class GetQuestion(views.APIView):
-    permission_classes = [IsAuthenticated, IsPaid]
+    permission_classes = [IsAuthenticated, IsPaid, GameStarted]
 
     def get(self, request, format=None):
         player = request.user
@@ -125,6 +125,7 @@ class GetQuestion(views.APIView):
         return Response({"success": is_correct})
 
 @api_view(['GET'])
+@permission_classes([GameStarted])
 def leaderboard(request):
     """
         Returns a list of players with highest score. The tie is broken

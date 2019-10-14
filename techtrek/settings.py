@@ -27,7 +27,7 @@ SECRET_KEY = KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # REST Framework
 REST_FRAMEWORK = {
@@ -157,10 +157,27 @@ MEDIA_URL = '/media/'
 # TIME MIDDLEWARE SETTINGS
 
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
-START_TIME = datetime(2019, 10, 13, 12, 26, 0)
-END_TIME = datetime(2019, 10, 13, 12, 27, 5)
+START_TIME = datetime(2019, 10, 14, 8, 12, 0)
+END_TIME = datetime(2019, 10, 14, 8, 14, 5)
 PAYTM_MERCHANT_KEY = "#nR%j@LUkBqgIlI%"
 PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
 HOST_URL = "http://localhost:8000"
 PAYTM_CALLBACK_URL = "/paytm/response/"
 PAYTM_WEBSITE = 'WEBSTAGING'
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '50/second',
+        'user': '500/second'
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}

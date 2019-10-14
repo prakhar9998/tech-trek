@@ -25,10 +25,11 @@ class RequirePayment(APIException):
     }
     
 class GameStarted(permissions.BasePermission):
+    message = "The game is yet to start"
     def has_permission(self, request, view):
-        if datetime.now() < settings.START_DATE:
+        if datetime.now() < settings.START_TIME:
             return False
-        elif datetime.now() > settings.END_DATE:
+        elif datetime.now() > settings.END_TIME:
             return False
         else:
             return True

@@ -21,6 +21,13 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         help_text='Password should be 6-32 characters long.',
         required=True
     )
+    password2 = serializers.CharField(
+        min_length=6,
+        max_length=32,
+        write_only=True,
+        help_text='Password should be 6-32 characters long.',
+        required=True
+    )
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(
@@ -53,19 +60,30 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
             'username',
             'email',
             'password',
+            'password2',
             'token',
             'avatar_no',
+            'contact_no',
+            'admission_no',
         ]
 
     def create(self, validated_data):
         username = validated_data['username']
         email = validated_data['email']
         password = validated_data['password']
+        password2 = validated_data.pop('password2', None)
         avatar_no = validated_data['avatar_no']
+        contact_no = validated_data['contact_no']
+        admission_no = validated_data['admission_no']
+        if password != password2:
+            raise serializers.ValidationError("Passwords didn't match.")
+        
         user = Player(
             username=username,
             email=email,
-            avatar_no=avatar_no
+            avatar_no=avatar_no,
+            contact_no=contact_no,
+            admission_no=admission_no
         )
         user.set_password(password)
         user.save()
