@@ -272,7 +272,7 @@ class Dashboard extends Component {
                       <h4 className="text-left ques-head">QUESTION</h4>
                       {this.state.isTimeLeft ? (
                         <>
-                          <Question ques="Hold your Horses! next question coming up soon !!" />
+                          <Question ques="Hold your Horses! next question is on the way !!" />
                           <div>
                             <input
                               className="answer-block"
@@ -306,7 +306,7 @@ class Dashboard extends Component {
                               </button>
                             </div>
 
-                            <div style={{ color: "red" }}>
+                            <div style={{ color: "red" }} className="pt-1">
                               <p>{this.state.selectedError} &nbsp;</p>
                             </div>
                             <div style={{ color: "green" }}>
