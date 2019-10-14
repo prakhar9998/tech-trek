@@ -2,6 +2,7 @@ from rest_framework import permissions
 from rest_framework.exceptions import APIException
 from rest_framework import status
 from datetime import datetime
+from django.conf import settings
 
 class IsPaid(permissions.BasePermission):
     """
@@ -23,6 +24,15 @@ class RequirePayment(APIException):
         'message': "Only paid users can access this."
     }
     
+class GameStarted(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if datetime.now() < settings.START_DATE:
+            return False
+        elif datetime.now() > settings.END_DATE:
+            return False
+        else:
+            return True
+
 
 # class IsTimeOver(permissions.BasePermission):
 #     """
