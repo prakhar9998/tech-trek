@@ -7,9 +7,9 @@ BADGE_CHOICES = (
     ("1", "level1"),
     ("2", "level2"),
     ("3", "level3"),
-    ("4", "level4"),
+    ("4", "solved first"),
     ("5", "level5"),
-    ("6", "solved first"),
+    ("6", "level6"),
 )
 
 class Badge(models.Model):
@@ -51,7 +51,6 @@ class Badge(models.Model):
                 .update(is_active=False)
             BadgeToPlayer.objects.create(badge=self, player=player)
             
-        # TODO: Send signal when badge is awarded.
         return True
 
 class BadgeToPlayer(models.Model):

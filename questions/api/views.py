@@ -83,7 +83,7 @@ class GetQuestion(views.APIView):
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
                     .update(is_level_solved=True)
-                badge = Badge.objects.get(badge_type="6")
+                badge = Badge.objects.get(badge_type="4")
                 print("AWARDING...")
                 badge.award_to(player)
 
