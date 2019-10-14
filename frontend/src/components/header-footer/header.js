@@ -63,7 +63,7 @@ class Header extends React.Component {
       6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
     return (
-      <Navbar dark expand="md">
+      <Navbar dark expand="md" sticky="top">
         <NavbarBrand href="/Dashboard">
           <img
             src={avtarCollection[this.state.avatar_no]}
