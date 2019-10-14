@@ -104,7 +104,7 @@ class Login extends Component {
               className="form-control"
               value={this.state.username}
               onChange={this.handleuserNameChanged.bind(this)}
-              placeholder="Username"
+              placeholder="Username or Email"
               style={{ fontSize: "1rem" }}
             />
             <small className="danger-error">

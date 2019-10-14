@@ -7,6 +7,8 @@ import Timer from "./timer";
 import NonPaid from "./nonpaid";
 import GameStart from "./gamestart";
 import audioSound from "../assets/bgaudio.mp3";
+import winner from "../assets/winner.mp3";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -98,6 +100,7 @@ class Dashboard extends Component {
   };
 
   answerSubmit = e => {
+    var music = new Audio(winner);
     e.preventDefault();
     const localtoken = localStorage.getItem("logintoken");
 
@@ -120,7 +123,7 @@ class Dashboard extends Component {
           this.getRandomErr();
         } else {
           this.getRandomSuccess();
-
+          music.play();
           fetch(`${process.env.REACT_APP_URL}/questions/`, {
             method: "get",
             headers: { Authorization: `Bearer ${localtoken}` }
