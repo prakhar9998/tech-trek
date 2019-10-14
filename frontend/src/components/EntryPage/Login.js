@@ -54,7 +54,7 @@ class Login extends Component {
         password: this.state.password
       };
       superagent
-        .post("http://210.212.85.155:3002/accounts/api/token/")
+        .post("http://sherlocked.zealicon.in/accounts/api/token/")
         .set("Content-Type", "application/json")
         .send(payload)
         .then(res => {

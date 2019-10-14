@@ -53,7 +53,7 @@ class Dashboard extends Component {
     });
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch("http://210.212.85.155:3002/questions/", {
+    fetch("http://sherlocked.zealicon.in/questions/", {
       method: "get",
       headers: { Authorization: `Bearer ${localtoken}` }
     })
@@ -100,7 +100,7 @@ class Dashboard extends Component {
     e.preventDefault();
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch("http://210.212.85.155:3002/questions/", {
+    fetch("http://sherlocked.zealicon.in/questions/", {
       method: "post",
       headers: {
         Authorization: `Bearer ${localtoken}`,
@@ -120,7 +120,7 @@ class Dashboard extends Component {
         } else {
           this.getRandomSuccess();
 
-          fetch("http://210.212.85.155:3002/questions/", {
+          fetch("http://sherlocked.zealicon.in/questions/", {
             method: "get",
             headers: { Authorization: `Bearer ${localtoken}` }
           })
@@ -171,7 +171,7 @@ class Dashboard extends Component {
   displayQuestion = () => {
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch("http://210.212.85.155:3002/questions/", {
+    fetch("http://sherlocked.zealicon.in/questions/", {
       method: "get",
       headers: { Authorization: `Bearer ${localtoken}` }
     })

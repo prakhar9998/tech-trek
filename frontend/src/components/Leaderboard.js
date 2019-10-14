@@ -12,7 +12,7 @@ class Leaderboard extends Component {
   }
 
   componentDidMount() {
-    fetch("http://210.212.85.155:3002/questions/leaderboard/", {
+    fetch("http://sherlocked.zealicon.in/questions/leaderboard/", {
       method: "get"
     })
       .then(response => response.json())

@@ -26,7 +26,7 @@ class Header extends React.Component {
   }
   gettingUsername = () => {
     const localtoken = localStorage.getItem("logintoken");
-    fetch("http://210.212.85.155:3002/accounts/api/", {
+    fetch("http://sherlocked.zealicon.in/accounts/api/", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localtoken}`

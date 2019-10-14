@@ -4,7 +4,7 @@ const NonPaid = () => {
   const handleClick = () => {
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch("http://210.212.85.155:3002/paytm/payment", {
+    fetch("http://sherlocked.zealicon.in/paytm/payment", {
       method: "get",
       headers: { Authorization: `Bearer ${localtoken}` }
     })

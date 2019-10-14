@@ -43,7 +43,7 @@ class Register extends Component {
     };
 
     superagent
-      .post("http://210.212.85.155:3002/accounts/api/register/")
+      .post("http://sherlocked.zealicon.in/accounts/api/register/")
       .set("Content-Type", "application/json")
       .send(payload)
       .then(res => {
