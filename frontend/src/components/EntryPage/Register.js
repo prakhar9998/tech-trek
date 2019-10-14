@@ -54,7 +54,7 @@ class Register extends Component {
         }
       })
       .catch(err => {
-        console.log(err.response.body);
+        console.log(err);
         if (err && err.response && err.response.body) {
           if (err.response.body.username) {
             this.setState({

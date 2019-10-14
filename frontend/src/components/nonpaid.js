@@ -4,7 +4,7 @@ const NonPaid = () => {
   const handleClick = () => {
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch(`${process.env.REACT_APP_URL}/paytm/payments`, {
+    fetch("http://localhost:8000/paytm/payment", {
       method: "get",
       headers: { Authorization: `Bearer ${localtoken}` }
     })
