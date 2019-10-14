@@ -106,15 +106,16 @@ class Header extends React.Component {
                 Leaderboard
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                className="py-4 px-4"
-                tag={RRNavLink}
-                to="http://www.facebook.com"
+            <li className="nav-item">
+              <a
+                className="py-4 px-4 nav-link"
+                target="_blank"
+                href="http://www.facebook.com"
+                style={{ fontWeight: "bold" }}
               >
                 Forum
-              </NavLink>
-            </NavItem>
+              </a>
+            </li>
             <NavItem>
               <>
                 {this.state.tokenlength > 10 ? (
