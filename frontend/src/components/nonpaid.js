@@ -4,7 +4,7 @@ const NonPaid = () => {
   const handleClick = () => {
     const localtoken = localStorage.getItem("logintoken");
 
-    fetch("http://localhost:8000/paytm/payment", {
+    fetch("http://210.212.85.155:3002/paytm/payment", {
       method: "get",
       headers: { Authorization: `Bearer ${localtoken}` }
     })
@@ -12,7 +12,7 @@ const NonPaid = () => {
       .then(responseJson => {
         const form = document.createElement("form");
         form.method = "post";
-        form.action = "https://securegw-stage.paytm.in/order/process";
+        form.action = "https://securegw.paytm.in/order/process";
 
         for (const key in responseJson) {
           if (responseJson.hasOwnProperty(key)) {
