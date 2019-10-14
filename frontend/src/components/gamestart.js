@@ -230,31 +230,51 @@ const GameStart = props => {
         </div>
         <div className="info">
           <div className="heading">
-            <p>You are All Set</p>
+            <p style={{ fontFamily: "Proxima Nova" }}>You are All Set</p>
 
-            <p>LET THE SPOOKY TREK START IN</p>
+            <p style={{ fontFamily: "Proxima Nova" }}>
+              LET THE SPOOKY TREK START IN
+            </p>
           </div>
 
           <div className="count">
             <div className="element">
-              <p className="num" id="hour">
+              <p
+                className="num"
+                id="hour"
+                style={{ fontFamily: "Proxima Nova" }}
+              >
                 {h}
               </p>
-              <p className="alpha">HOURS</p>
+              <p className="alpha" style={{ fontFamily: "Proxima Nova" }}>
+                HOURS
+              </p>
             </div>
             <p className="colon">:</p>
             <div className="element">
-              <p className="num" id="min">
+              <p
+                className="num"
+                id="min"
+                style={{ fontFamily: "Proxima Nova" }}
+              >
                 {m}
               </p>
-              <p className="alpha">MINUTES</p>
+              <p className="alpha" style={{ fontFamily: "Proxima Nova" }}>
+                MINUTES
+              </p>
             </div>
             <p className="colon">:</p>
             <div className="element">
-              <p className="num" id="sec">
+              <p
+                className="num"
+                id="sec"
+                style={{ fontFamily: "Proxima Nova" }}
+              >
                 {s}
               </p>
-              <p className="alpha">SECONDS</p>
+              <p className="alpha" style={{ fontFamily: "Proxima Nova" }}>
+                SECONDS
+              </p>
             </div>
           </div>
         </div>

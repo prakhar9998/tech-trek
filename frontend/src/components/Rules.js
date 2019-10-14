@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./header-footer/header";
 import Footer from "./header-footer/footer";
+import audioSound from "../assets/bgaudio.mp3";
+
 class Rules extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,9 @@ class Rules extends Component {
     return (
       <div className="rules">
         <Header />
+        <audio autoPlay loop>
+          <source src={audioSound} type="audio/mp3" />
+        </audio>
         <div className="spider-wrap">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./header-footer/header";
 import Footer from "./header-footer/footer";
 import UserList from "./UserList";
+import audioSound from "../assets/bgaudio.mp3";
 
 class Leaderboard extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class Leaderboard extends Component {
     return (
       <div className="leaderboard">
         <Header />
+        <audio autoPlay loop>
+          <source src={audioSound} type="audio/mp3" />
+        </audio>
         <div className="spider-wrap">
           <svg
             xmlns="http://www.w3.org/2000/svg"

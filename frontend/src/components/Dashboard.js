@@ -6,6 +6,7 @@ import Achievements from "./Achievements";
 import Timer from "./timer";
 import NonPaid from "./nonpaid";
 import GameStart from "./gamestart";
+import audioSound from "../assets/bgaudio.mp3";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +48,7 @@ class Dashboard extends Component {
     const hours = time.getHours();
     const min = time.getMinutes();
     const sec = time.getSeconds();
-    const TimeLeft = (47 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
+    const TimeLeft = (23 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
     this.setState({
       startTime: TimeLeft
     });
@@ -131,9 +132,11 @@ class Dashboard extends Component {
                 responseJson.detail &&
                 responseJson.detail.question;
               let badges = [];
-              responseJson.badges.map(data => {
-                badges.push(Object.values(data)[0]);
-              });
+              if (badges) {
+                responseJson.badges.map(data => {
+                  badges.push(Object.values(data)[0]);
+                });
+              }
               this.setState({
                 currQ: responseJson.player_info.current_question,
                 score: responseJson.player_info.score,
@@ -217,7 +220,9 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Header />
-
+        <audio autoPlay loop>
+          <source src={audioSound} type="audio/mp3" />
+        </audio>
         <div className="spider-wrap">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +258,7 @@ class Dashboard extends Component {
           <NonPaid />
         ) : (
           <div>
-            {this.state.startTime === 0 ? (
+            {this.state.startTime <= 0 ? (
               <div
                 className="dashboard-content pt-3 mt-5"
                 style={{ zIndex: "1" }}
