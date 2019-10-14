@@ -218,7 +218,7 @@ const NonPaid = () => {
             <img
               className="logo"
               src="https://gs-post-images.grdp.co/2019/10/logo-img1570905617416-54.png-rs-high-webp.png"
-              alt=""
+              alt="logo"
             />
           </div>
         </div>
@@ -229,6 +229,7 @@ const NonPaid = () => {
               onClick={handleClick}
               width="70%"
               className="paytm"
+              alt="paytm"
             />
           </div>
         </div>
