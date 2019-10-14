@@ -45,7 +45,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '50/second',
+        'anon': '60/minute',
         'user': '500/second'
     },
     'DEFAULT_RENDERER_CLASSES': (
@@ -63,6 +63,10 @@ SIMPLE_JWT = {
 # Application definition
 
 AUTH_USER_MODEL = 'accounts.Player'
+
+AUTHENTICATION_BACKENDS = (
+    'techtrek.auth_backend.EmailOrUsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',)
 
 USE_TZ = True
 TIME_ZONE = 'Asia/Kolkata'
