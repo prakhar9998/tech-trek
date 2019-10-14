@@ -19,7 +19,7 @@ from questions.api.serializers import (
 from badges.api.serializers import BadgesSerializer
 
 class GetQuestion(views.APIView):
-    permission_classes = [IsAuthenticated, IsPaid, GameStarted]
+    permission_classes = [IsAuthenticated, IsPaid]
 
     def get(self, request, format=None):
         player = request.user
@@ -134,7 +134,6 @@ class GetQuestion(views.APIView):
         return Response({"success": is_correct})
 
 @api_view(['GET'])
-@permission_classes([GameStarted])
 def leaderboard(request):
     """
         Returns a list of players with highest score. The tie is broken
