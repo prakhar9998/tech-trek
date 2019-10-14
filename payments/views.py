@@ -1,3 +1,6 @@
+import requests
+import json
+
 from django.shortcuts import render
 from django.conf import settings
 from accounts.models import Player
@@ -112,13 +115,47 @@ def response(request):
             print(oid)
             player = Order.objects.get(order_id=oid).player
             assert isinstance(player, Player)
-            PaymentHistory.objects.create(player=player, **data_dict)
+            
             if data_dict['STATUS'] == 'TXN_SUCCESS':
-                player.is_paid = True
-                player.save()
-                return render(request, "response.html", {'status': True})
+                # Re-verify transaction status from paytm server.
+
+                # initialize a dictionary
+                paytmParams = dict()
+
+                # Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
+                paytmParams["MID"] = settings.PAYTM_MERCHANT_ID
+
+                # Enter your order id which needs to be check status for
+                paytmParams["ORDERID"] = oid
+
+                # Generate checksum by parameters we have in body
+                # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+                checksum = Checksum.generate_checksum(paytmParams, MERCHANT_KEY)
+
+                # put generated checksum value here
+                paytmParams["CHECKSUMHASH"] = checksum
+
+                # prepare JSON string for request
+                post_data = json.dumps(paytmParams)
+
+                # for Staging
+                url = "https://securegw-stage.paytm.in/order/status"
+
+                # for Production
+                # url = "https://securegw.paytm.in/order/status"
+
+                verify_res = requests.post(url, data=post_data, headers={"Content-type": "application/json"}).json()
+                print("VERIFY RES", verify_res)
+                if verify_res["RESPCODE"] == "01":
+                    player.is_paid = True
+                    player.save()
+                    PaymentHistory.objects.create(player=player, **verify_res)
+                    return render(request, "response.html", {'status': True})
+                else:
+                    return render(request, "response.html", {'status': False})                
             else:
                 # return HttpResponse("Payment unsuccesful.")
+                PaymentHistory.objects.create(player=player, **data_dict)
                 return render(request, "response.html", {'status': False})
         else:
             return HttpResponse("Checksum verification failed")
