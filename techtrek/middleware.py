@@ -17,7 +17,7 @@ class TimeMiddleware(object):
         print(datetime.now(), settings.START_TIME)
         if datetime.now() < settings.START_TIME:
             return JsonResponse({
-                "timeToStart": settings.START_TIME - datetime.now()
+                "timeToStart": (settings.START_TIME - datetime.now()).total_seconds()
             })
         if datetime.now() > settings.END_TIME:
             return HttpResponse("ENDED")
