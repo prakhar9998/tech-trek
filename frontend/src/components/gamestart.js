@@ -1,36 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import TimeFormat from "hh-mm-ss";
 
-const NonPaid = () => {
-  const handleClick = () => {
-    const localtoken = localStorage.getItem("logintoken");
+const GameStart = props => {
+  let mainTime;
 
-    fetch("http://localhost:8000/paytm/payment", {
-      method: "get",
-      headers: { Authorization: `Bearer ${localtoken}` }
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        const form = document.createElement("form");
-        form.method = "post";
-        form.action = "https://securegw-stage.paytm.in/order/process";
+  const [seconds, setSeconds] = useState(props.time);
+  useEffect(() => {
+    startTime();
+    return () => {
+      stopTimer();
+    };
+  });
 
-        for (const key in responseJson) {
-          if (responseJson.hasOwnProperty(key)) {
-            const hiddenField = document.createElement("input");
-            hiddenField.type = "hidden";
-            hiddenField.name = key;
-            hiddenField.value = responseJson[key];
-
-            form.appendChild(hiddenField);
-          }
-        }
-        document.body.appendChild(form);
-        console.log("FORM", form);
-        form.submit();
-      });
+  const startTime = () => {
+    if (seconds && seconds > 0) {
+      mainTime = setInterval(tick, 1000);
+    }
   };
+
+  const stopTimer = () => {
+    clearInterval(mainTime);
+  };
+
+  const tick = () => {
+    setSeconds(seconds => {
+      const updatedSeconds = seconds - 1;
+      if (updatedSeconds < 1) {
+        stopTimer();
+        setTimeout(props.displayQuestion(), 2000);
+      }
+      return updatedSeconds;
+    });
+  };
+
+  const display = TimeFormat.fromS(seconds, "hh:mm:ss");
+  const [h, m, s] = display.split(":");
   return (
-    <div className="nonpaid-page" style={{ overflowY: "hidden" }}>
+    <div className="nonpaid-page" style={{ overflowY: "hidden!important" }}>
       <div className="web-pumpkin2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +218,7 @@ const NonPaid = () => {
         </svg>
       </div>
 
-      <div className="containerdata">
+      <div className="containerdata2">
         <div className="ill2">
           <div className="logo-wrap" style={{ zIndex: "5" }}>
             <img
@@ -223,13 +229,31 @@ const NonPaid = () => {
           </div>
         </div>
         <div className="info">
-          <div className="text-center" style={{ zIndex: "4" }}>
-            <img
-              src="https://gs-post-images.grdp.co/2019/10/paytm-web-img1571004302793-79.png-rs-high-webp.png"
-              onClick={handleClick}
-              width="70%"
-              className="paytm"
-            />
+          <div class="heading">
+            <p>LET THE SPOOKY TREK START IN</p>
+          </div>
+
+          <div class="count">
+            <div class="element">
+              <p class="num" id="hour">
+                {h}
+              </p>
+              <p class="alpha">HOURS</p>
+            </div>
+            <p class="colon">:</p>
+            <div class="element">
+              <p class="num" id="min">
+                {m}
+              </p>
+              <p class="alpha">MINUTES</p>
+            </div>
+            <p class="colon">:</p>
+            <div class="element">
+              <p class="num" id="sec">
+                {s}
+              </p>
+              <p class="alpha">SECONDS</p>
+            </div>
           </div>
         </div>
       </div>
@@ -237,4 +261,4 @@ const NonPaid = () => {
   );
 };
 
-export default NonPaid;
+export default GameStart;
