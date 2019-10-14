@@ -9,6 +9,7 @@ from accounts.models import Player
 from badges.models import Badge
 from datetime import datetime
 from django.db.models import Count
+from django.conf import settings
 
 from questions.api.serializers import (
     PlayerInfoSerializer,
@@ -26,7 +27,10 @@ class GetQuestion(views.APIView):
         
         tz_info = player.unlock_time.tzinfo
         time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        has_started = True
         q_text = ""
+        if datetime.now() < settings.START_TIME:
+            has_started = False
         if time_left < 0:
             time_left = 0
 
@@ -37,13 +41,13 @@ class GetQuestion(views.APIView):
         player_info_serializer = PlayerInfoSerializer(player)
         queryset = player.badges.annotate(total=Count('badge_type'))
         badge_serializer = BadgesSerializer(queryset, many=True)
-
+        
         return Response({
                 "player_info": player_info_serializer.data,
                 "isTimeLeft": bool(time_left),
                 "badges": badge_serializer.data,
                 "detail": {
-                    "question": q_text,
+                    "question": q_text if has_started else "",
                     "time_left": time_left,
                 }
                 
@@ -55,6 +59,11 @@ class GetQuestion(views.APIView):
 
         tz_info = player.unlock_time.tzinfo
         time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        
+        if datetime.now() < settings.START_TIME:
+            return Response({
+                "detail": "Game is not started yet."
+            })
 
         if time_left >= 0:
             return Response({

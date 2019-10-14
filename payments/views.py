@@ -150,13 +150,13 @@ def response(request):
                     player.is_paid = True
                     player.save()
                     PaymentHistory.objects.create(player=player, **verify_res)
-                    return render(request, "response.html", {'status': True})
+                    return render(request, "response.html", {'status': True, 'msg': data_dict['RESPMSG']})
                 else:
-                    return render(request, "response.html", {'status': False})                
+                    return render(request, "response.html", {'status': False, 'msg': data_dict['RESPMSG']})                
             else:
                 # return HttpResponse("Payment unsuccesful.")
                 PaymentHistory.objects.create(player=player, **data_dict)
-                return render(request, "response.html", {'status': False})
+                return render(request, "response.html", {'status': False, 'msg': data_dict['RESPMSG']})
         else:
             return HttpResponse("Checksum verification failed")
     return HttpResponse(status=200)
