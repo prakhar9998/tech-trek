@@ -12,7 +12,7 @@ class Leaderboard extends Component {
   }
 
   componentDidMount() {
-    fetch("http://sherlocked.zealicon.in/questions/leaderboard/", {
+    fetch(`${process.env.REACT_APP_URL}/questions/leaderboard/`, {
       method: "get"
     })
       .then(response => response.json())
