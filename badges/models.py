@@ -46,7 +46,7 @@ class Badge(models.Model):
             else:
                 BadgeToPlayer.objects.create(badge=self, player=player)   
         else:
-            print("NOT ONE TIME ONLY")
+            # print("NOT ONE TIME ONLY")
             BadgeToPlayer.objects.filter(badge=self)\
                 .update(is_active=False)
             BadgeToPlayer.objects.create(badge=self, player=player)

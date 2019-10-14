@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from utils.permissions import IsPaid, GameStarted
 from utils.badges import should_award_badge
+from utils.questions import get_next_question
 from questions.models import Question
 from accounts.models import Player
 from badges.models import Badge
@@ -35,7 +36,8 @@ class GetQuestion(views.APIView):
             time_left = 0
 
             # TODO: add utility function for fetching question.
-            q = Question.objects.get(level=player.current_question)
+            # q = Question.objects.get(level=player.current_question)
+            q = get_next_question(player)
             q_text = q.question
         
         player_info_serializer = PlayerInfoSerializer(player)
@@ -74,13 +76,10 @@ class GetQuestion(views.APIView):
                 }
             })
 
-        question = Question.objects.get(level=player.current_question)
-
+        # question = Question.objects.get(level=player.current_question)
+        question = get_next_question(player)
         if request.data['answer'].lower() == question.tech_answer:
             if question.is_level_solved is False:
-                # TODO: award "active" badge to this player and mark
-                # all others "inactive".
-
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
                     .update(is_level_solved=True)
@@ -105,9 +104,6 @@ class GetQuestion(views.APIView):
 
         elif request.data['answer'].lower() == question.nontech_answer:
             if question.is_level_solved is False:
-                # TODO: award "active" badge to this player and mark
-                # all others "inactive".
-
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
                     .update(is_level_solved=True)
