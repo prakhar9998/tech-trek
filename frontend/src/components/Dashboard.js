@@ -47,7 +47,7 @@ class Dashboard extends Component {
     const hours = time.getHours();
     const min = time.getMinutes();
     const sec = time.getSeconds();
-    const TimeLeft = (47 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
+    const TimeLeft = (23 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
     this.setState({
       startTime: TimeLeft
     });
@@ -253,7 +253,7 @@ class Dashboard extends Component {
           <NonPaid />
         ) : (
           <div>
-            {this.state.startTime === 0 ? (
+            {this.state.startTime <= 0 ? (
               <div
                 className="dashboard-content pt-3 mt-5"
                 style={{ zIndex: "1" }}

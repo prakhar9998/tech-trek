@@ -230,9 +230,11 @@ const GameStart = props => {
         </div>
         <div className="info">
           <div className="heading">
-            <p>You are All Set</p>
+            <p style={{ fontFamily: "Proxima Nova" }}>You are All Set</p>
 
-            <p>LET THE SPOOKY TREK START IN</p>
+            <p style={{ fontFamily: "Proxima Nova" }}>
+              LET THE SPOOKY TREK START IN
+            </p>
           </div>
 
           <div className="count">
