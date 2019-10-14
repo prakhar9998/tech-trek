@@ -230,6 +230,8 @@ const GameStart = props => {
         </div>
         <div className="info">
           <div className="heading">
+            <p>You are All Set</p>
+
             <p>LET THE SPOOKY TREK START IN</p>
           </div>
 

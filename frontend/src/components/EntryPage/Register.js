@@ -15,6 +15,11 @@ class Register extends Component {
       email: "",
       avatarNo: "1",
       errors: [],
+      usernameErr: "",
+      passwordErr: "",
+      cpasswordErr: "",
+      mobileErr: "",
+      emailErr: "",
       usernameres: "",
       emailres: ""
     };
@@ -31,7 +36,10 @@ class Register extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-      avatar_no: this.state.avatarNo
+      avatar_no: this.state.avatarNo,
+      contact_no: this.state.mobile,
+      password2: this.state.cpassword,
+      admission_no: this.state.admissionNo
     };
 
     superagent
@@ -46,6 +54,7 @@ class Register extends Component {
         }
       })
       .catch(err => {
+        console.log(err.response.body);
         if (err && err.response && err.response.body) {
           if (err.response.body.username) {
             this.setState({
@@ -108,11 +117,11 @@ class Register extends Component {
     if (this.state.admissionNo === "") {
       this.Validation("admissionNo", "Please enter your Admission No");
     }
-    if (this.state.username === "") {
-      this.Validation("username", "Username will be your identity, don't skip");
+    if (this.state.username === "" || this.state.username.length < 4) {
+      this.Validation("username", "Don't skip and greater than 4");
     }
     if (this.state.password === "") {
-      this.Validation("password", "Password lenght should be greater than 6");
+      this.Validation("password", "Password length should be greater than 6");
     }
     if (
       this.state.cpassword === "" ||
@@ -129,7 +138,7 @@ class Register extends Component {
     }
     if (
       this.state.admissionNo !== "" &&
-      this.state.username !== "" &&
+      this.state.username.length > 4 &&
       this.state.password !== "" &&
       this.state.cpassword !== "" &&
       this.state.mobile !== "" &&
@@ -204,6 +213,7 @@ class Register extends Component {
                 className="form-control mt-3"
                 placeholder="Password"
                 onChange={this.onPasswordChange}
+                minLength="6"
               />
               <p className="danger-error my-0">
                 {passwordErr ? passwordErr : ""}
@@ -216,6 +226,7 @@ class Register extends Component {
                 className="form-control mt-3"
                 placeholder="Confirm Password"
                 onChange={this.onCpasswordChange}
+                minLength="6"
               />
               <p className="danger-error my-0">
                 {cpasswordErr ? cpasswordErr : ""}
@@ -231,6 +242,8 @@ class Register extends Component {
                 placeholder="Mobile"
                 onChange={this.onMobileChange}
                 pattern="[0-9]{10}"
+                minLength="10"
+                maxLength="10"
               />
               <p className="danger-error my-0">{mobileErr ? mobileErr : ""}</p>
             </div>
@@ -258,8 +271,16 @@ class Register extends Component {
             >
               Register
             </button>
-            <small className="danger-error">{this.state.usernameres}</small>
-            <small className="danger-error">{this.state.emailres}</small>
+            <small className="danger-error">{`${
+              this.state.usernameres.length > 0
+                ? `username ${this.state.usernameres}`
+                : ""
+            }`}</small>
+            <small className="danger-error">{`${
+              this.state.emailres.length > 0
+                ? `email: ${this.state.emailres}`
+                : ""
+            }`}</small>
           </div>
         </form>
       </div>
