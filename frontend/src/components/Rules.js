@@ -70,15 +70,18 @@ class Rules extends Component {
                 </li>
 
                 <li>
-                  The answers are to be written{" "}
-                  <strong> only in lowercase </strong>. Special symbols,
-                  numerics and spaces are not allowed.Example : If an answer is
+                  <b>Special symbols</b> and
+                  <b>spaces</b> are not allowed.Example : If an answer is
                   "christopher nolan" submit it as "christophernolan" without
                   any special character.
                 </li>
                 <li>
                   There may be some waiting time in between the questions. Try
                   to be Patient!
+                </li>
+                <li>
+                  If the details provided during registration are not genuine,
+                  there will be no reward on winning.
                 </li>
                 <li>
                   No backtracking is allowed i.e If your answer is accepted for

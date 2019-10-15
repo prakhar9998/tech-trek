@@ -39,21 +39,21 @@ class Dashboard extends Component {
       question: "",
       isTimeLeft: false,
       remainingTime: 0,
-      isPaid: "False",
+      isPaid: "",
       badgeArray: [],
       startTime: 0
     };
   }
 
   componentDidMount() {
-    const time = new Date();
-    const hours = time.getHours();
-    const min = time.getMinutes();
-    const sec = time.getSeconds();
-    const TimeLeft = (23 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
-    this.setState({
-      startTime: TimeLeft
-    });
+    // const time = new Date();
+    // const hours = time.getHours();
+    // const min = time.getMinutes();
+    // const sec = time.getSeconds();
+    // const TimeLeft = (23 - hours) * 3600 + (60 - min) * 60 + (60 - sec);
+    // // this.setState({
+    // //   startTime: TimeLeft
+    // // });
     const localtoken = localStorage.getItem("logintoken");
 
     fetch(`${process.env.REACT_APP_URL}/questions/`, {
