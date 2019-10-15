@@ -85,7 +85,7 @@ class App extends Component {
           <Redirect to="/Rules" />
         ) : (
           <>
-            <div>
+            <div style={{ overflowX: "hidden" }}>
               <div className="web-pumpkin">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

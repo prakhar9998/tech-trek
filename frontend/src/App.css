@@ -708,7 +708,7 @@ body,
 .spider-wrap {
   height: 100%;
   width: 100%;
-  position: fixed;
+  position: absolute;
   right: -60px;
   top: 60px;
 }
@@ -717,6 +717,7 @@ body,
   .spider-wrap {
     top: 55px;
     right: -30px;
+    display: none;
   }
 }
 
@@ -1063,7 +1064,7 @@ body,
 .spider-wrap2 {
   height: 50%;
   width: 50%;
-  position: fixed;
+  position: absolute;
   right: -60px;
   top: -20px;
 }
@@ -1072,6 +1073,7 @@ body,
   .spider-wrap2 {
     top: -30px;
     right: -30px;
+    display: none;
   }
 }
 

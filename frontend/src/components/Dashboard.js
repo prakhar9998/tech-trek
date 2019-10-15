@@ -39,7 +39,7 @@ class Dashboard extends Component {
       question: "",
       isTimeLeft: false,
       remainingTime: 0,
-      isPaid: "False",
+      isPaid: "",
       badgeArray: [],
       startTime: 0
     };
