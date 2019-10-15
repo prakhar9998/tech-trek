@@ -35,8 +35,6 @@ class GetQuestion(views.APIView):
         if time_left < 0:
             time_left = 0
 
-            # TODO: add utility function for fetching question.
-            # q = Question.objects.get(level=player.current_question)
             q = get_next_question(player)
             q_text = q.question
         
