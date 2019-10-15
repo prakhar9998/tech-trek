@@ -2,12 +2,12 @@ from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from utils.permissions import IsPaid, GameStarted
+from utils.permissions import IsPaid
 from utils.badges import should_award_badge
 from utils.questions import get_next_question
 from questions.models import Question
 from accounts.models import Player
-from badges.models import Badge
+from badges.models import Badge, BadgeToPlayer
 from datetime import datetime
 from django.db.models import Count
 from django.conf import settings
@@ -17,7 +17,7 @@ from questions.api.serializers import (
     LeaderboardSerializer,
 )
 
-from badges.api.serializers import BadgesSerializer
+from badges.api.serializers import BadgeToPlayerSerializer
 
 class GetQuestion(views.APIView):
     permission_classes = [IsAuthenticated, IsPaid]
@@ -41,19 +41,19 @@ class GetQuestion(views.APIView):
             q_text = q.question
         
         player_info_serializer = PlayerInfoSerializer(player)
-        queryset = player.badges.annotate(total=Count('badge_type'))
-        badge_serializer = BadgesSerializer(queryset, many=True)
-        
+        # queryset = player.badges.annotate(total=Count('badge_type'))
+        queryset = BadgeToPlayer.objects.filter(player=player, is_active=True)
+        badge_serializer = BadgeToPlayerSerializer(queryset, many=True)
+
         return Response({
-                "player_info": player_info_serializer.data,
-                "isTimeLeft": bool(time_left),
-                "badges": badge_serializer.data,
-                "detail": {
-                    "question": q_text if has_started else "",
-                    "time_left": time_left,
-                }
-                
-            })
+            "player_info": player_info_serializer.data,
+            "isTimeLeft": bool(time_left),
+            "badges": badge_serializer.data,
+            "detail": {
+                "question": q_text if has_started else "",
+                "time_left": time_left,
+            }
+        })
 
     def post(self, request, format=None):
         player = request.user
@@ -61,7 +61,7 @@ class GetQuestion(views.APIView):
 
         tz_info = player.unlock_time.tzinfo
         time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
-        
+
         if datetime.now() < settings.START_TIME:
             return Response({
                 "detail": "Game is not started yet."
@@ -84,7 +84,7 @@ class GetQuestion(views.APIView):
                 Question.objects.filter(level=player.current_question)\
                     .update(is_level_solved=True)
                 badge = Badge.objects.get(badge_type="4")
-                print("AWARDING...")
+                # print("AWARDING...")
                 badge.award_to(player)
 
             player.current_question = player.current_question + 1
@@ -99,7 +99,6 @@ class GetQuestion(views.APIView):
                 badge.award_to(player)
             player.save()
 
-            
             is_correct = True
 
         elif request.data['answer'].lower() == question.nontech_answer:
@@ -137,7 +136,7 @@ def leaderboard(request):
     """
 
     queryset = Player.objects.order_by("-score", "last_solved")\
-        .filter(is_superuser=False, is_paid=True)
+        .filter(is_superuser=False, is_paid=True)[:50]
     serializer = LeaderboardSerializer(queryset, many=True)
 
     return Response(serializer.data)

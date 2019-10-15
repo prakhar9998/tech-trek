@@ -15,7 +15,6 @@ class PlayerUserAdmin(UserAdmin):
             'current_question',
             'last_solved',
             'unlock_time',
-            'avatar',
             'avatar_no'
             )
         }),
