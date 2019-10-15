@@ -1,7 +1,7 @@
 from rest_framework import serializers
 # from questions.models import Question
 from accounts.models import Player
-from badges.api.serializers import BadgeToPlayerSerializer
+from badges.api.serializers import BadgeSerializer, BadgeToPlayerSerializer
 from django.db.models import Count
 from badges.models import BadgeToPlayer
 
@@ -18,12 +18,14 @@ class PlayerInfoSerializer(serializers.ModelSerializer):
 
 class LeaderboardSerializer(serializers.BaseSerializer):
     def to_representation(self, obj):
-        queryset = BadgeToPlayer.objects.filter(player=obj, is_active=True)
-        badge_serializer = BadgeToPlayerSerializer(queryset, many=True)
+        # queryset = obj.badges.annotate(total=Count('badge_type'))
+        # badge_serializer = BadgeSerializer(queryset, many=True)
+        badge4_count = obj.badges.filter(badge_type="4").count()
         return {
             'player_name': obj.username,
             'score': obj.score,
             'email': obj.email,
             'avatar_no': obj.avatar_no,
-            'badges': badge_serializer.data,
+            'badge_4': badge4_count
         }
+ 

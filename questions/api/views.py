@@ -136,7 +136,7 @@ def leaderboard(request):
     """
 
     queryset = Player.objects.order_by("-score", "last_solved")\
-        .filter(is_superuser=False, is_paid=True)[:50]
+        .filter(is_superuser=False, is_paid=True)
     serializer = LeaderboardSerializer(queryset, many=True)
 
     return Response(serializer.data)
