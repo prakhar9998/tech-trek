@@ -89,8 +89,8 @@ class GetQuestion(views.APIView):
 
             player.current_question = player.current_question + 1
             player.score = player.score + 10
-            player.unlock_time = datetime.now() + question.wait_duration
-            player.last_solved = datetime.now()
+            player.unlock_time = datetime.now(tz_info) + question.wait_duration
+            player.last_solved = datetime.now(tz_info)
 
             # Award badges
             should_award, badge_type = should_award_badge(player)
@@ -112,8 +112,8 @@ class GetQuestion(views.APIView):
             
             player.current_question = player.current_question + 1
             player.score = player.score + 5
-            player.unlock_time = datetime.now() + question.wait_duration
-            player.last_solved = datetime.now()
+            player.unlock_time = datetime.now(tz_info) + question.wait_duration
+            player.last_solved = datetime.now(tz_info)
             
             # Award badges
             should_award, badge_type = should_award_badge(player)
