@@ -7,6 +7,8 @@ import Timer from "./timer";
 import NonPaid from "./nonpaid";
 import GameStart from "./gamestart";
 import audioSound from "../assets/bgaudio.mp3";
+import winner from "../assets/winner.mp3";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -98,6 +100,7 @@ class Dashboard extends Component {
   };
 
   answerSubmit = e => {
+    var music = new Audio(winner);
     e.preventDefault();
     const localtoken = localStorage.getItem("logintoken");
 
@@ -120,7 +123,7 @@ class Dashboard extends Component {
           this.getRandomErr();
         } else {
           this.getRandomSuccess();
-
+          music.play();
           fetch(`${process.env.REACT_APP_URL}/questions/`, {
             method: "get",
             headers: { Authorization: `Bearer ${localtoken}` }
@@ -269,7 +272,7 @@ class Dashboard extends Component {
                       <h4 className="text-left ques-head">QUESTION</h4>
                       {this.state.isTimeLeft ? (
                         <>
-                          <Question ques="Hold your Horses! next question coming up soon !!" />
+                          <Question ques="Hold your Horses! next question is on the way !!" />
                           <div>
                             <input
                               className="answer-block"
@@ -303,7 +306,7 @@ class Dashboard extends Component {
                               </button>
                             </div>
 
-                            <div style={{ color: "red" }}>
+                            <div style={{ color: "red" }} className="pt-1">
                               <p>{this.state.selectedError} &nbsp;</p>
                             </div>
                             <div style={{ color: "green" }}>

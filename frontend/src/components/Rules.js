@@ -68,17 +68,17 @@ class Rules extends Component {
                   The TECHNICAL answer will earn you 10 points and the
                   NON-TECHNICAL answer will earn you 5 points.
                 </li>
-                <li>
-                  Some questions will test your luck where you have to choose 1
-                  of the 3 boxes. You will win Special badges if you answer them
-                  correctly.
-                </li>
+
                 <li>
                   The answers are to be written{" "}
                   <strong> only in lowercase </strong>. Special symbols,
                   numerics and spaces are not allowed.Example : If an answer is
                   "christopher nolan" submit it as "christophernolan" without
                   any special character.
+                </li>
+                <li>
+                  There may be some waiting time in between the questions. Try
+                  to be Patient!
                 </li>
                 <li>
                   No backtracking is allowed i.e If your answer is accepted for
@@ -99,7 +99,7 @@ class Rules extends Component {
                 </li>
                 <li>
                   The winner will be announced on the Facebook page and on the
-                  Infoconnect as well, after the game terminates.
+                  Instagram as well, after the game terminates.
                 </li>
                 <li>
                   {" "}
