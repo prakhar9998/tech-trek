@@ -9,7 +9,7 @@ def get_total_badges(player):
 
 def should_award_badge(player):
     # Badge = apps.get_model('badges', 'Badge')
-    print("NUM QUES", player.num_questions_solved)
+    # print("NUM QUES", player.num_questions_solved)
     # ONLY FOR DEVELOPMENT
     # TODO: Change for production
     if (player.num_questions_solved == 5):

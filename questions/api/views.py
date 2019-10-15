@@ -35,8 +35,6 @@ class GetQuestion(views.APIView):
         if time_left < 0:
             time_left = 0
 
-            # TODO: add utility function for fetching question.
-            # q = Question.objects.get(level=player.current_question)
             q = get_next_question(player)
             q_text = q.question
         
@@ -78,7 +76,7 @@ class GetQuestion(views.APIView):
 
         # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
-        if request.data['answer'].lower() == question.tech_answer:
+        if request.data.get('answer').lower() == question.tech_answer:
             if question.is_level_solved is False:
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
@@ -89,8 +87,8 @@ class GetQuestion(views.APIView):
 
             player.current_question = player.current_question + 1
             player.score = player.score + 10
-            player.unlock_time = datetime.now() + question.wait_duration
-            player.last_solved = datetime.now()
+            player.unlock_time = datetime.now(tz_info) + question.wait_duration
+            player.last_solved = datetime.now(tz_info)
 
             # Award badges
             should_award, badge_type = should_award_badge(player)
@@ -101,7 +99,7 @@ class GetQuestion(views.APIView):
 
             is_correct = True
 
-        elif request.data['answer'].lower() == question.nontech_answer:
+        elif request.data.get('answer').lower() == question.nontech_answer:
             if question.is_level_solved is False:
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
@@ -112,8 +110,8 @@ class GetQuestion(views.APIView):
             
             player.current_question = player.current_question + 1
             player.score = player.score + 5
-            player.unlock_time = datetime.now() + question.wait_duration
-            player.last_solved = datetime.now()
+            player.unlock_time = datetime.now(tz_info) + question.wait_duration
+            player.last_solved = datetime.now(tz_info)
             
             # Award badges
             should_award, badge_type = should_award_badge(player)
