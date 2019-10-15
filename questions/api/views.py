@@ -78,7 +78,7 @@ class GetQuestion(views.APIView):
 
         # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
-        if request.data['answer'].lower() == question.tech_answer:
+        if request.POST.get('answer').lower() == question.tech_answer:
             if question.is_level_solved is False:
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
@@ -101,7 +101,7 @@ class GetQuestion(views.APIView):
 
             is_correct = True
 
-        elif request.data['answer'].lower() == question.nontech_answer:
+        elif request.POST.get('answer').lower() == question.nontech_answer:
             if question.is_level_solved is False:
                 # Update questions to mark that the level is solved.
                 Question.objects.filter(level=player.current_question)\
