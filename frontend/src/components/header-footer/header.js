@@ -110,7 +110,7 @@ class Header extends React.Component {
               <a
                 className="py-4 px-4 nav-link"
                 target="_blank"
-                href="http://www.facebook.com"
+                href="http://www.facebook.com/nibblecomputersociety"
                 style={{ fontWeight: "bold" }}
               >
                 Forum

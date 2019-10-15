@@ -9,3 +9,4 @@ secrets.py
 plsignore
 frontend/node_modules/
 media/
+frontend/build/
