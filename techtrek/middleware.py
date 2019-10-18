@@ -10,7 +10,7 @@ class TimeMiddleware(object):
         return self.get_response(request)
 
     def process_view(self, request, callback, callback_args, callback_kwargs):
-        if datetime.now() > datetime(2019, 10, 18, 23, 18, 0):
+        if datetime.now() > datetime(2019, 10, 18, 23, 59, 0):
             if request.path.startswith('/questions/leaderboard/'):
                 return None
             return HttpResponse("Game Ended")
