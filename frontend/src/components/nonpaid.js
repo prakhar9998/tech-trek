@@ -1,34 +1,6 @@
 import React from "react";
 
 const NonPaid = () => {
-  const handleClick = () => {
-    const localtoken = localStorage.getItem("logintoken");
-
-    fetch(`${process.env.REACT_APP_URL}/paytm/payment`, {
-      method: "get",
-      headers: { Authorization: `Bearer ${localtoken}` }
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        const form = document.createElement("form");
-        form.method = "post";
-        form.action = "https://securegw.paytm.in/order/process";
-
-        for (const key in responseJson) {
-          if (responseJson.hasOwnProperty(key)) {
-            const hiddenField = document.createElement("input");
-            hiddenField.type = "hidden";
-            hiddenField.name = key;
-            hiddenField.value = responseJson[key];
-
-            form.appendChild(hiddenField);
-          }
-        }
-        document.body.appendChild(form);
-        console.log("FORM", form);
-        form.submit();
-      });
-  };
   return (
     <div className="nonpaid-page" style={{ overflowY: "hidden" }}>
       <div className="web-pumpkin2">
@@ -224,13 +196,7 @@ const NonPaid = () => {
         </div>
         <div className="info">
           <div className="text-center" style={{ zIndex: "4" }}>
-            <img
-              src="https://gs-post-images.grdp.co/2019/10/paytm-web-img1571004302793-79.png-rs-high-webp.png"
-              onClick={handleClick}
-              width="70%"
-              className="paytm"
-              alt="paytm"
-            />
+            <h2 style={{ color: " #e5023e" }}>Registrations are closed</h2>
           </div>
         </div>
       </div>

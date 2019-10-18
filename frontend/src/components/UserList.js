@@ -10,7 +10,7 @@ class UserList extends React.Component {
       5: "https://i.ibb.co/r2pXhbD/Group-16.png",
       6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
-    console.log(this.props.list);
+
     return (
       <div style={{ zIndex: "5" }}>
         <div className="leaderboard-container mt-5">

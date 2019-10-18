@@ -13,9 +13,9 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const Root = () => (
   <Router>
-    <Route exact path="/" component={App} />
+    <Route exact path="/" component={Leaderboard} />
     <Route exact path="/Rules" component={Rules} />
-    <PrivateRoute path="/Dashboard" component={Dashboard} />
+    <PrivateRoute path="/Dashboard" component={Leaderboard} />
     <Route exact path="/Leaderboard" component={Leaderboard} />
   </Router>
 );
