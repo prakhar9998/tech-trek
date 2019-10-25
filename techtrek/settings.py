@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import django_heroku
 import os
 # from .secrets import KEY
 from datetime import datetime, timedelta
@@ -91,7 +91,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'techtrek.middleware.TimeMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -181,3 +180,5 @@ PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
 HOST_URL = "http://localhost:8000"
 PAYTM_CALLBACK_URL = "/paytm/response/"
 PAYTM_WEBSITE = 'WEBSTAGING'
+
+django_heroku.settings(locals())
