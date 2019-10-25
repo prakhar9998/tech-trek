@@ -48,9 +48,6 @@ REST_FRAMEWORK = {
         'anon': '60/minute',
         'user': '500/second'
     },
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    )
 }
 
 # CORS Headers
