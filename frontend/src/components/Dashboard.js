@@ -226,6 +226,7 @@ class Dashboard extends Component {
         <audio autoPlay loop>
           <source src={audioSound} type="audio/mp3" />
         </audio>
+
         {this.state.isPaid === "False" ? (
           <NonPaid />
         ) : (

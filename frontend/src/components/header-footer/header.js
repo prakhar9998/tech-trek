@@ -18,7 +18,7 @@ class Header extends React.Component {
       isOpen: false,
       users: "",
       tokenlength: 0,
-      avatar_no: 1
+      avatar_no: 0
     };
   }
   componentDidMount() {
@@ -55,6 +55,7 @@ class Header extends React.Component {
   };
   render() {
     const avtarCollection = {
+      0: "",
       1: "https://i.ibb.co/TbRZ9b7/Group-11.png",
       2: "https://i.ibb.co/GnNz6rK/Group-14.png",
       3: "https://i.ibb.co/Y3jzNNV/Group-12.png",
@@ -64,7 +65,7 @@ class Header extends React.Component {
     };
     return (
       <Navbar dark expand="md" sticky="top">
-        <NavbarBrand href="/Dashboard">
+        <NavbarBrand href="/">
           <img
             src={avtarCollection[this.state.avatar_no]}
             alt=""
@@ -79,19 +80,19 @@ class Header extends React.Component {
             <NavItem>
               <NavLink
                 className="py-4 px-4"
-                activeClassName="active"
                 tag={RRNavLink}
-                to="/Rules"
+                exact={true}
+                to="/rules"
               >
                 Rules
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
+                exact={true}
                 className="py-4 px-4"
-                activeClassName="active"
                 tag={RRNavLink}
-                to="/Dashboard"
+                to="/"
               >
                 Dashboard
               </NavLink>
@@ -99,9 +100,9 @@ class Header extends React.Component {
             <NavItem>
               <NavLink
                 className="py-4 px-4"
-                activeClassName="active"
+                exact={true}
                 tag={RRNavLink}
-                to="/Leaderboard"
+                to="/leaderboard"
               >
                 Leaderboard
               </NavLink>

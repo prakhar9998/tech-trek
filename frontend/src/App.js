@@ -14,7 +14,8 @@ class App extends Component {
       isRegisterOpen: false,
       isAvatarOpen: false,
       loginOpen: false,
-      loginState: false
+      loginState: false,
+      name: "kunal"
     };
     this.showAvatar = this.showAvatar.bind(this);
   }
@@ -82,7 +83,7 @@ class App extends Component {
     return (
       <>
         {this.state.loginOpen === true ? (
-          <Redirect to="/Rules" />
+          <Redirect to="/" />
         ) : (
           <>
             <div style={{ overflowX: "hidden" }}>
@@ -282,7 +283,7 @@ class App extends Component {
                       ></p>
 
                       <div className="box-container">
-                        {this.state.isLoginOpen && <LoginForm />}
+                        {this.state.isLoginOpen && <LoginForm name="name" />}
                         {this.state.isRegisterOpen && (
                           <Register func={this.showAvatar} />
                         )}
