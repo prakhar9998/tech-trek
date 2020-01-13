@@ -17,7 +17,7 @@ class Registerform extends Component {
         {isAuthenticated ? (
           <Redirect
             to={{
-              pathname: "/Rules"
+              pathname: "/"
             }}
           />
         ) : (

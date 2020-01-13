@@ -9,7 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 
-import { NavLink as RRNavLink } from "react-router-dom";
+import { NavLink as RRNavLink, withRouter } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Header extends React.Component {
       isOpen: false,
       users: "",
       tokenlength: 0,
-      avatar_no: 1
+      avatar_no: 0
     };
   }
   componentDidMount() {
@@ -55,6 +55,7 @@ class Header extends React.Component {
   };
   render() {
     const avtarCollection = {
+      0: "",
       1: "https://i.ibb.co/TbRZ9b7/Group-11.png",
       2: "https://i.ibb.co/GnNz6rK/Group-14.png",
       3: "https://i.ibb.co/Y3jzNNV/Group-12.png",
@@ -62,9 +63,14 @@ class Header extends React.Component {
       5: "https://i.ibb.co/r2pXhbD/Group-16.png",
       6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
+    if (
+      this.props.location.pathname === "/login" ||
+      this.props.location.pathname === "/admin"
+    )
+      return null;
     return (
       <Navbar dark expand="md" sticky="top">
-        <NavbarBrand href="/Dashboard">
+        <NavbarBrand href="/">
           <img
             src={avtarCollection[this.state.avatar_no]}
             alt=""
@@ -79,19 +85,19 @@ class Header extends React.Component {
             <NavItem>
               <NavLink
                 className="py-4 px-4"
-                activeClassName="active"
                 tag={RRNavLink}
-                to="/Rules"
+                exact={true}
+                to="/rules"
               >
                 Rules
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
+                exact={true}
                 className="py-4 px-4"
-                activeClassName="active"
                 tag={RRNavLink}
-                to="/Dashboard"
+                to="/"
               >
                 Dashboard
               </NavLink>
@@ -99,9 +105,9 @@ class Header extends React.Component {
             <NavItem>
               <NavLink
                 className="py-4 px-4"
-                activeClassName="active"
+                exact={true}
                 tag={RRNavLink}
-                to="/Leaderboard"
+                to="/leaderboard"
               >
                 Leaderboard
               </NavLink>
@@ -137,4 +143,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

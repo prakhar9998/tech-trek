@@ -288,14 +288,14 @@ body,
 .leaderboard,
 .dashboard,
 .forum {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   color: #fff !important;
   flex-direction: column;
   /* background-color: #141426; */
   background-image: url(https://gs-post-images.grdp.co/2019/10/artboard-1-img1570818243116-71.png-rs-high-webp.png);
   background-size: cover;
-  background-position: bottom;
+  /*background-position: bottom;*/
   background-repeat: no-repeat;
 }
 

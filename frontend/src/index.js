@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 
 import "./index.css";
@@ -10,13 +10,16 @@ import Leaderboard from "./components/Leaderboard";
 import Rules from "./components/Rules";
 import Dashboard from "./components/Dashboard";
 import "bootstrap/dist/css/bootstrap.css";
-
+import Header from "./components/header-footer/header";
 const Root = () => (
   <Router>
-    <Route exact path="/" component={Leaderboard} />
-    <Route exact path="/Rules" component={Rules} />
-    <PrivateRoute path="/Dashboard" component={Leaderboard} />
-    <Route exact path="/Leaderboard" component={Leaderboard} />
+    <Header />
+    <Switch>
+      <PrivateRoute exact={true} path="/" component={Dashboard} />
+      <Route exact={true} path="/login" component={App} />
+      <Route exact={true} path="/rules" component={Rules} />
+      <Route exact={true} path="/leaderboard" component={Leaderboard} />
+    </Switch>
   </Router>
 );
 

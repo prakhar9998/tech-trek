@@ -59,11 +59,12 @@ class Login extends Component {
         .send(payload)
         .then(res => {
           localStorage.setItem("logintoken", res.body.access);
+          localStorage.setItem("username", res.body.name);
           this.setState({
             logintoken: localStorage.getItem("logintoken").length
           });
           this.props.onSuccessfulLogin();
-          window.location.reload();
+          this.props.history.push("/");
         })
 
         .catch(err => {
@@ -93,7 +94,7 @@ class Login extends Component {
     }
 
     return (
-      <div className="">
+      <div>
         <div>
           <form
             className="form-signin mt-4"
