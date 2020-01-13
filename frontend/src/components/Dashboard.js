@@ -222,7 +222,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <Header />
+        {/* <Header /> */}
         <audio autoPlay loop>
           <source src={audioSound} type="audio/mp3" />
         </audio>

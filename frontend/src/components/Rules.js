@@ -12,7 +12,7 @@ class Rules extends Component {
   render() {
     return (
       <div className="rules">
-        <Header />
+        {/* <Header /> */}
         <audio autoPlay loop>
           <source src={audioSound} type="audio/mp3" />
         </audio>

@@ -30,7 +30,7 @@ class Leaderboard extends Component {
   render() {
     return (
       <div className="leaderboard">
-        <Header />
+        {/* <Header /> */}
         <audio autoPlay loop>
           <source src={audioSound} type="audio/mp3" />
         </audio>

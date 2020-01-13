@@ -9,7 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 
-import { NavLink as RRNavLink } from "react-router-dom";
+import { NavLink as RRNavLink, withRouter } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
@@ -63,6 +63,11 @@ class Header extends React.Component {
       5: "https://i.ibb.co/r2pXhbD/Group-16.png",
       6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
+    if (
+      this.props.location.pathname === "/login" ||
+      this.props.location.pathname === "/admin"
+    )
+      return null;
     return (
       <Navbar dark expand="md" sticky="top">
         <NavbarBrand href="/">
@@ -138,4 +143,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
