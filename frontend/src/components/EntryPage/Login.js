@@ -64,7 +64,7 @@ class Login extends Component {
             logintoken: localStorage.getItem("logintoken").length
           });
           this.props.onSuccessfulLogin();
-          window.location.reload();
+          this.props.history.push("/");
         })
 
         .catch(err => {
