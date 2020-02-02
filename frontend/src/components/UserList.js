@@ -45,6 +45,7 @@ class UserList extends React.Component {
                             src="https://i.ibb.co/9pBpNnn/Asset-7.png"
                             width="30px"
                             height="30px"
+                            alt="badge"
                           />
                           <div style={{ position: "relative" }}>
                             <span

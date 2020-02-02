@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./header-footer/header";
 import Footer from "./header-footer/footer";
 import Question from "./Question";
 import Achievements from "./Achievements";

@@ -26,24 +26,25 @@ class Header extends React.Component {
   }
   gettingUsername = () => {
     const localtoken = localStorage.getItem("logintoken");
-    fetch(`${process.env.REACT_APP_URL}/accounts/api/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localtoken}`
-      }
-    })
-      .then(res => res.json())
-      .then(response => {
-        console.log();
-        this.setState({
-          users: response.username,
-          avatar_no: response.avatar_no
+    if (localtoken && localtoken.length > 10) {
+      fetch(`${process.env.REACT_APP_URL}/accounts/api/`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localtoken}`
+        }
+      })
+        .then(res => res.json())
+        .then(response => {
+          this.setState({
+            users: response.username,
+            avatar_no: response.avatar_no
+          });
         });
-      });
-    if (localStorage.getItem("logintoken") !== null)
-      this.setState({
-        tokenlength: localStorage.getItem("logintoken").length
-      });
+      if (localStorage.getItem("logintoken") !== null)
+        this.setState({
+          tokenlength: localStorage.getItem("logintoken").length
+        });
+    }
   };
   toggle = () => {
     this.setState({
@@ -63,11 +64,8 @@ class Header extends React.Component {
       5: "https://i.ibb.co/r2pXhbD/Group-16.png",
       6: "https://i.ibb.co/pyYKwXL/A6.png"
     };
-    if (
-      this.props.location.pathname === "/login" ||
-      this.props.location.pathname === "/admin"
-    )
-      return null;
+    if (this.props.location.pathname === "/login") return null;
+
     return (
       <Navbar dark expand="md" sticky="top">
         <NavbarBrand href="/">
@@ -89,7 +87,7 @@ class Header extends React.Component {
                 exact={true}
                 to="/rules"
               >
-                Rules
+                <span onClick={this.toggle}>Rules</span>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -99,7 +97,7 @@ class Header extends React.Component {
                 tag={RRNavLink}
                 to="/"
               >
-                Dashboard
+                <span onClick={this.toggle}>Dashboard</span>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -109,13 +107,14 @@ class Header extends React.Component {
                 tag={RRNavLink}
                 to="/leaderboard"
               >
-                Leaderboard
+                <span onClick={this.toggle}>Leaderboard</span>
               </NavLink>
             </NavItem>
             <li className="nav-item">
               <a
                 className="py-4 px-4 nav-link"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="http://www.facebook.com/nibblecomputersociety"
                 style={{ fontWeight: "bold" }}
               >
